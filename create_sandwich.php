@@ -284,6 +284,14 @@
                     // let z="sec_"+parent.id+"_img";
                     // z.removeChild("sec_"+parent.id+"_img"+x.id);
                     document.getElementById("sec_"+parent.id+"_img"+x.id).remove();
+
+                    $("#sec_2_img").children().each(function () {
+                        // alert(this.id);
+                        $(this).offset($("#sec_1_img").offset());
+                        // alert(this.value); // "this" is the current element in the loop
+                    });
+
+
                     //document.getElementById("sec_"+parent.id+"_img"+x.id).style.display="none";
 
                     // alert("sec_"+parent.id+"_img"+x.id);
