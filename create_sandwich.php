@@ -135,23 +135,39 @@
                 </div><!-- END title bta3 el section -->
 
                 <div><!-- el list bta3et el Cheese -->
-                    <input type="radio" id="Mozarella" name="Cheese_Type" value="Mozarella">
-                    <label for="Mozarella">Mozarella</label>
+                    <input type="checkbox" id="SWISS" name="Cheese_Type" value="SWISS" onchange="print(this)">
+                    <label for="SWISS">SWISS</label><br>
+
+                    <input type="checkbox" id="PROVOLONE" name="Cheese_Type" value="PROVOLONE" onchange="print(this)">
+                    <label for="PROVOLONE">PROVOLONE</label><br>
+
+                    <input type="checkbox" id="MOZZARELLA" name="Cheese_Type" value="MOZZARELLA" onchange="print(this)">
+                    <label for="MOZZARELLA">MOZZARELLA</label><br>
+
+                    <input type="checkbox" id="CHEDDAR" name="Cheese_Type" value="CHEDDAR" onchange="print(this)">
+                    <label for="CHEDDAR">CHEDDAR</label><br>
                     
-                    <br>
+                    <input type="checkbox" id="PEPPER_JACK" name="Cheese_Type" value="PEPPER_JACK" onchange="print(this)">
+                    <label for="PEPPER_JACK">PEPPER_JACK</label><br>
 
-                    <input type="radio" id="Cheddar" name="Cheese_Type" value="Cheddar">
-                    <label for="Cheddar">Cheddar</label>
+                    <input type="checkbox" id="MUENSTER" name="Cheese_Type" value="MUENSTER" onchange="print(this)">
+                    <label for="MUENSTER">MUENSTER</label><br>
 
-                    <br>
+                    <input type="checkbox" id="AMERICAN" name="Cheese_Type" value="AMERICAN" onchange="print(this)">
+                    <label for="AMERICAN">AMERICAN</label><br>
 
-                    <input type="radio" id="American" name="Cheese_Type" value="American">
-                    <label for="American">American</label>
-
-                    <br>
+                    <input type="checkbox" id="BRIE" name="Cheese_Type" value="BRIE" onchange="print(this)">
+                    <label for="BRIE">BRIE</label><br>
                     
-                    <input type="radio" id="Parmesan" name="Cheese_Type" value="Parmesan">
-                    <label for="Parmesan">Parmesan</label>
+                    <input type="checkbox" id="RICOTTA" name="Cheese_Type" value="RICOTTA" onchange="print(this)">
+                    <label for="RICOTTA">RICOTTA</label><br>
+
+                    <input type="checkbox" id="PARMESAN" name="Cheese_Type" value="PARMESAN" onchange="print(this)">
+                    <label for="PARMESAN">PARMESAN</label><br>
+
+                    <input type="checkbox" id="FETA" name="Cheese_Type" value="FETA" onchange="print(this)">
+                    <label for="FETA">FETA</label><br>
+
                 </div><!-- END el list bta3et el Cheese -->
 
             </div><!-- END 3rd section "Cheese section" -->
@@ -250,69 +266,76 @@
 
     <script>
 
-        function print(x)
-        {                            
-            // $("#sec_2_img").offset($("#sec_1_img").offset());
-
-            // let y=x.getAttribute('value');
-            // document.getElementById("batee5").innerHTML=y;
-
-            let parent=x.parentNode.parentNode;
-            let name_of_item=x.id;
-            let insert_div="sec_"+parent.id+"_img";
+        // function print(x)
+        // {
+        //     let parent=x.parentNode.parentNode;// 
+        //     let name_of_item=x.id;
+        //     let insert_div="sec_"+parent.id+"_img";
             
-            if(parent.id==1)// to remove previous bread
-            {
-                if(document.getElementById(insert_div).childElementCount==1)
-                {
-                    document.getElementById("sec_"+parent.id+"_img").innerHTML="";
-                }
-                let div=document.createElement('div');
-                div.id="sec_"+parent.id+"_img"+x.id;
-                div.innerHTML='<img src="/test/bread/'+name_of_item+'.png" alt="">';
-                document.getElementById("sec_"+parent.id+"_img").append(div);
-                // alert(document.getElementById(insert_location).childElementCount);
-                // document.getElementById(insert_location+x.id).remove();
-                // document.getElementById(insert_location).removeChild("sec_"+parent.id+"_img"+x.id);
-                // alert("sec_"+parent.id+"_img"+x.id);
-                // document.getElementById("sec_1_imgRYE").remove();
-            }
-            else if(parent.id==2)
-            {
-                if(!x.checked) 
-                {
-                    // let z="sec_"+parent.id+"_img";
-                    // z.removeChild("sec_"+parent.id+"_img"+x.id);
-                    document.getElementById("sec_"+parent.id+"_img"+x.id).remove();
+        //     if(parent.id==1)// to remove previous bread
+        //     {
+        //         document.getElementById("sec_"+parent.id+"_img").innerHTML=""; //to remove previous bread
 
-                    $("#sec_2_img").children().each(function () {
-                        // alert(this.id);
+        //         let div=document.createElement('div');
+        //         div.id="sec_"+parent.id+"_img"+x.id;
+        //         div.innerHTML='<img src="/test/bread/'+name_of_item+'.png" alt="">';
+        //         document.getElementById("sec_"+parent.id+"_img").append(div);
+        //     }
+        //     else 
+        //     {
+        //         if(!x.checked) 
+        //         {
+        //             document.getElementById("sec_"+parent.id+"_img"+x.id).remove();
+
+        //             $("#sec_2_img").children().each(function () {
+        //                 $(this).offset($("#sec_1_img").offset());
+        //             });
+        //         }
+        //         else
+        //         {
+        //             let div=document.createElement('div');
+        //             div.id="sec_"+parent.id+"_img"+x.id;
+        //             let xyz=parent.id;
+        //             div.innerHTML='<img src="/test/protein/'+name_of_item+'.png" alt="">';
+        //             document.getElementById("sec_"+xyz+"_img").append(div);
+        //            $("#sec_"+parent.id+"_img"+x.id).offset($("#sec_1_img").offset());
+        //         }
+        //     }
+        // }
+
+
+        function print(node)
+        {
+            let parent_node_id=node.parentNode.parentNode.id; //section num
+            let name_of_node=node.id; //name of node
+            let insert_section_div="sec_"+parent_node_id+"_img"; // place to insert image
+
+            let div=document.createElement('div'); // creates div that stores the selected image
+            div.id=insert_section_div+name_of_node;
+            div.innerHTML='<img src="/Restaurant_Web_Project/images/'+parent_node_id+'/'+name_of_node+'.png" alt="">';
+
+            if(parent_node_id==1)
+            {
+                document.getElementById(insert_section_div).innerHTML=""; // removes other type of bread to add the new type
+                document.getElementById(insert_section_div).append(div);
+            }
+            else
+            {
+                if(!node.checked) 
+                {
+                    document.getElementById(div.id).remove();
+
+                    $("#"+insert_section_div).children().each(function () { // loops on every child to recalculate new margins
                         $(this).offset($("#sec_1_img").offset());
-                        // alert(this.value); // "this" is the current element in the loop
                     });
-
-
-                    //document.getElementById("sec_"+parent.id+"_img"+x.id).style.display="none";
-
-                    // alert("sec_"+parent.id+"_img"+x.id);
                 }
-                else// error fel remove
+                else
                 {
-                    let div=document.createElement('div');
-                    div.id="sec_"+parent.id+"_img"+x.id;
-                    let xyz=parent.id;
-                    div.innerHTML='<img src="/test/protein/'+name_of_item+'.png" alt="">';
-                    document.getElementById("sec_"+xyz+"_img").append(div);
-                   $("#sec_"+parent.id+"_img"+x.id).offset($("#sec_1_img").offset());
-                    // $("#sec_"+xyz+"_img"+x.id).offset($("#sec_2_img").offset());
-
+                    document.getElementById(insert_section_div).append(div);
+                    $(div).offset($("#sec_1_img").offset()); // add the created div on top of bread
                 }
             }
-            // document.getElementById("myDiv").style.marginTop = "50px";
-
         }
-
-
 
 
 
