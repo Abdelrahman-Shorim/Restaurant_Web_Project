@@ -180,23 +180,65 @@
                 </div><!-- END title bta3 el section -->
 
                 <div><!-- el list bta3et el Toppings -->
-                    <input type="radio" id="Tomatoes" name="Toppings" value="Tomatoes">
-                    <label for="Tomatoes">Tomatoes</label>
+                    <input type="checkbox" id="TOMATOES" name="Toppings" value="TOMATOES" onchange="print(this)">
+                    <label for="TOMATOES">TOMATOES</label><br>
+
+                    <input type="checkbox" id="LETTUCE" name="Toppings" value="LETTUCE" onchange="print(this)">
+                    <label for="LETTUCE">LETTUCE</label><br>
+
+                    <input type="checkbox" id="ONIONS" name="Toppings" value="ONIONS" onchange="print(this)">
+                    <label for="ONIONS">ONIONS</label><br>
+
+                    <input type="checkbox" id="ARUGULA" name="Toppings" value="ARUGULA" onchange="print(this)">
+                    <label for="ARUGULA">ARUGULA</label><br>
                     
-                    <br>
+                    <input type="checkbox" id="SPINACH" name="Toppings" value="SPINACH" onchange="print(this)">
+                    <label for="SPINACH">SPINACH</label><br>
 
-                    <input type="radio" id="Lettuce" name="Toppings" value="Lettuce">
-                    <label for="Lettuce">Lettuce</label>
+                    <input type="checkbox" id="KALE" name="Toppings" value="KALE" onchange="print(this)">
+                    <label for="KALE">KALE</label><br>
 
-                    <br>
+                    <input type="checkbox" id="ALFALFA_SPROUTS" name="Toppings" value="ALFALFA_SPROUTS" onchange="print(this)">
+                    <label for="ALFALFA_SPROUTS">ALFALFA SPROUTS</label><br>
 
-                    <input type="radio" id="Onion" name="Toppings" value="Onion">
-                    <label for="Onion">Onion</label>
-
-                    <br>
+                    <input type="checkbox" id="CUCUMBERS" name="Toppings" value="CUCUMBERS" onchange="print(this)">
+                    <label for="CUCUMBERS">CUCUMBERS</label><br>
                     
-                    <input type="radio" id="Mushrooms" name="Toppings" value="Mushrooms">
-                    <label for="Mushrooms">Mushrooms</label>
+                    <input type="checkbox" id="PICKLES" name="Toppings" value="PICKLES" onchange="print(this)">
+                    <label for="PICKLES">PICKLES</label><br>
+
+                    <input type="checkbox" id="MUSHROOMS" name="Toppings" value="MUSHROOMS" onchange="print(this)">
+                    <label for="MUSHROOMS">MUSHROOMS</label><br>
+
+                    <input type="checkbox" id="OLIVES" name="Toppings" value="OLIVES" onchange="print(this)">
+                    <label for="OLIVES">OLIVES</label><br>
+
+                    <input type="checkbox" id="BANANA_PEPPERS" name="Toppings" value="BANANA_PEPPERS" onchange="print(this)">
+                    <label for="BANANA_PEPPERS">BANANA_PEPPERS</label><br>
+
+                    <input type="checkbox" id="JALAPENOS" name="Toppings" value="JALAPENOS" onchange="print(this)">
+                    <label for="JALAPENOS">JALAPENOS</label><br>
+
+                    <input type="checkbox" id="ROASTED_RED_PEPPERS" name="Toppings" value="ROASTED_RED_PEPPERS" onchange="print(this)">
+                    <label for="ROASTED_RED_PEPPERS">ROASTED RED PEPPERS</label><br>
+
+                    <input type="checkbox" id="SLICED_APPLE" name="Toppings" value="SLICED_APPLE" onchange="print(this)">
+                    <label for="SLICED_APPLE">SLICED_APPLE</label><br>
+                    
+                    <input type="checkbox" id="COLESLAW" name="Toppings" value="COLESLAW" onchange="print(this)">
+                    <label for="COLESLAW">COLESLAW</label><br>
+
+                    <input type="checkbox" id="SAUERKRAUT" name="Toppings" value="SAUERKRAUT" onchange="print(this)">
+                    <label for="SAUERKRAUT">SAUERKRAUT</label><br>
+
+                    <input type="checkbox" id="KETTLE_COOKED_CHIPS" name="Toppings" value="KETTLE_COOKED_CHIPS" onchange="print(this)">
+                    <label for="KETTLE_COOKED_CHIPS">KETTLE_COOKED_CHIPS</label><br>
+                    
+                    <input type="checkbox" id="AVOCADO" name="Toppings" value="AVOCADO" onchange="print(this)">
+                    <label for="AVOCADO">AVOCADO</label><br>
+                    
+                    
+
                 </div><!-- END el list bta3et el Toppings -->
 
             </div><!-- END 4th section "Cheese section" -->
@@ -209,23 +251,58 @@
                 </div><!-- END title bta3 el section -->
 
                 <div><!-- el list bta3et el Sauces -->
-                    <input type="radio" id="Ketchup" name="Sauces" value="Ketchup">
-                    <label for="Ketchup">Ketchup</label>
+                    <input type="checkbox" id="MAYONNAISE" name="SAUCES" value="MAYONNAISE" onchange="print(this)">
+                    <label for="MAYONNAISE">MAYONNAISE</label><br>
+
+                    <input type="checkbox" id="SPICY_MATONNAISE" name="SAUCES" value="SPICY_MATONNAISE" onchange="print(this)">
+                    <label for="SPICY_MATONNAISE">SPICY MATONNAISE</label><br>
+
+                    <input type="checkbox" id="SPICY_BROWN_MUSTARD" name="SAUCES" value="SPICY_BROWN_MUSTARD" onchange="print(this)">
+                    <label for="SPICY_BROWN_MUSTARD">SPICY_BROWN_MUSTARD</label><br>
+
+                    <input type="checkbox" id="DIJON_MUSTARD" name="SAUCES" value="DIJON_MUSTARD" onchange="print(this)">
+                    <label for="DIJON_MUSTARD">DIJON_MUSTARD</label><br>
                     
-                    <br>
+                    <input type="checkbox" id="HONEY_MUSTARD" name="SAUCES" value="HONEY_MUSTARD" onchange="print(this)">
+                    <label for="HONEY_MUSTARD">HONEY_MUSTARD</label><br>
 
-                    <input type="radio" id="Mayonnaise" name="Sauces" value="Mayonnaise">
-                    <label for="Mayonnaise">Mayonnaise</label>
+                    <input type="checkbox" id="OIL&VINEGAR" name="SAUCES" value="OIL&VINEGAR" onchange="print(this)">
+                    <label for="OIL&VINEGAR">OIL&VINEGAR</label><br>
 
-                    <br>
+                    <input type="checkbox" id="PESTO" name="SAUCES" value="PESTO" onchange="print(this)">
+                    <label for="PESTO">PESTO</label><br>
 
-                    <input type="radio" id="Honey_Mustard" name="Sauces" value="Honey_Mustard">
-                    <label for="Honey_Mustard">Honey Mustard</label>
-
-                    <br>
+                    <input type="checkbox" id="BALSAMIC_DRESSING" name="SAUCES" value="BALSAMIC_DRESSING" onchange="print(this)">
+                    <label for="BALSAMIC_DRESSING">BALSAMIC_DRESSING</label><br>
                     
-                    <input type="radio" id="BBQ" name="Sauces" value="BBQ">
-                    <label for="BBQ">BBQ</label>
+                    <input type="checkbox" id="RUSSIAN_DRESSING" name="SAUCES" value="RUSSIAN_DRESSING" onchange="print(this)">
+                    <label for="RUSSIAN_DRESSING">RUSSIAN_DRESSING</label><br>
+
+                    <input type="checkbox" id="HORSERADISH" name="SAUCES" value="HORSERADISH" onchange="print(this)">
+                    <label for="HORSERADISH">HORSERADISH</label><br>
+
+                    <input type="checkbox" id="BBQ_SAUCE" name="SAUCES" value="BBQ_SAUCE" onchange="print(this)">
+                    <label for="BBQ_SAUCE">BBQ_SAUCE</label><br>
+
+                    <input type="checkbox" id="RANCH" name="SAUCES" value="RANCH" onchange="print(this)">
+                    <label for="RANCH">RANCH</label><br>
+
+                    <input type="checkbox" id="TZATZIKI" name="SAUCES" value="TZATZIKI" onchange="print(this)">
+                    <label for="TZATZIKI">TZATZIKI</label><br>
+
+                    <input type="checkbox" id="SRIRACHA" name="SAUCES" value="SRIRACHA" onchange="print(this)">
+                    <label for="SRIRACHA">SRIRACHA</label><br>
+
+                    <input type="checkbox" id="THAI_PEANUT" name="SAUCES" value="THAI_PEANUT" onchange="print(this)">
+                    <label for="THAI_PEANUT">THAI_PEANUT</label><br>
+                    
+                    <input type="checkbox" id="HONEY" name="SAUCES" value="HONEY" onchange="print(this)">
+                    <label for="HONEY">HONEY</label><br>
+
+                    <input type="checkbox" id="HUMMUS" name="SAUCES" value="HUMMUS" onchange="print(this)">
+                    <label for="HUMMUS">HUMMUS</label><br>
+
+                    
                 </div><!-- END el list bta3et el Toppings -->
 
             </div><!-- END 4th section "Sauces section" -->
@@ -324,15 +401,20 @@
                 if(!node.checked) 
                 {
                     document.getElementById(div.id).remove();
-
-                    $("#"+insert_section_div).children().each(function () { // loops on every child to recalculate new margins
-                        $(this).offset($("#sec_1_img").offset());
-                    });
+                    // $("#"+insert_section_div).children().each(function () { // loops on every child to recalculate new margins
+                    //     $(this).offset($("#sec_1_img").offset());
+                    // });
                 }
                 else
                 {
                     document.getElementById(insert_section_div).append(div);
-                    $(div).offset($("#sec_1_img").offset()); // add the created div on top of bread
+                    // $(div).offset($("#sec_1_img").offset()); // add the created div on top of bread
+                }
+                for(let i=parent_node_id;i<=5;i++)
+                {
+                    $("#sec_"+i+"_img").children().each(function () { // loops on every child to recalculate new margins
+                            $(this).offset($("#sec_1_img").offset());
+                    });
                 }
             }
         }
