@@ -1,0 +1,55 @@
+<html>
+
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "pro";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if($conn->connect_error) die("fatal Error");
+
+    $query="SELECT * FROM item_types";
+    $result=$conn->query($query);
+    if(!$result) die("fatal Error");
+
+    echo '<div >';
+    while($result2=mysqli_fetch_array($result))
+    {
+        echo'<label id ="'. $result2["ID"].'" onclick="reload(this)">' .  $result2["I_Type"] . '</label>'.'<br>';
+    }
+    echo '</div>';
+   
+    if($_GET)
+    {
+        $query2= "SELECT * FROM items , item_types WHERE item_types.ID=items.I_Type AND items.I_Type=".$_GET['id'];
+        $result=$conn->query($query2);
+        if(!$result) die("fatal Error");
+
+        echo '<div>';
+        while($result2=mysqli_fetch_array($result))
+        { 
+            echo '<div id ="'. $result2["I_ID"].'">';
+            echo'<label id ="'. $result2["I_ID"].'" onclick="myfun2(this)">' . '<img src="'.$result2["img"].'" width="300" height="300">'.'<br>' . $result2["Name"]. '<br>' . $result2["Description"] .'<br>' . $result2["Price"] .'<br>'.'</label>'.'<br>';
+            echo "<a href='req.php'><input type='button' value='order' onclick='idfun(this)'> </a>";
+            echo "</div>";  
+        }
+        echo "</div>";
+    }
+    mysqli_close($conn);
+   ?>
+
+<script>
+   function idfun(x)
+   {
+        alert(x.parentNode.parentNode.id) ;
+   }
+</script>
+
+<script>
+   function reload(x)
+   {
+        location.replace("food.php?id="+x.id);
+   }
+</script>
+</html>
