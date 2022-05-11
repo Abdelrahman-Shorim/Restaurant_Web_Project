@@ -4,7 +4,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "pro";
+    $dbname = "restaurant_web_project";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if($conn->connect_error) die("fatal Error");
@@ -26,11 +26,15 @@
         $result=$conn->query($query2);
         if(!$result) die("fatal Error");
 
+
+        // Restaurant_Web_Project\Menu_images\Beef\Beef Fillet Three Sauces.jpg
+
+
         echo '<div>';
         while($result2=mysqli_fetch_array($result))
         { 
             echo '<div id ="'. $result2["I_ID"].'">';
-            echo'<label id ="'. $result2["I_ID"].'" onclick="myfun2(this)">' . '<img src="'.$result2["img"].'" width="300" height="300">'.'<br>' . $result2["Name"]. '<br>' . $result2["Description"] .'<br>' . $result2["Price"] .'<br>'.'</label>'.'<br>';
+            echo'<label id ="'. $result2["I_ID"].'">' . '<img src="/'.$result2["img"].'" width="300" height="300">'.'<br>' . $result2["Name"]. '<br>' . $result2["Description"] .'<br>' . $result2["Price"] .'<br>'.'</label>'.'<br>';
             echo "<a href='req.php'><input type='button' value='order' onclick='idfun(this)'> </a>";
             echo "</div>";  
         }
