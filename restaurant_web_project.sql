@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 01:48 AM
+-- Generation Time: May 11, 2022 at 12:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,38 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant_web_project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `C_ID` int(10) NOT NULL,
+  `U_ID` int(12) NOT NULL,
+  `I_ID` int(12) NOT NULL,
+  `comment` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gender`
+--
+
+CREATE TABLE `gender` (
+  `ID` int(11) NOT NULL,
+  `Type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gender`
+--
+
+INSERT INTO `gender` (`ID`, `Type`) VALUES
+(1, 'male'),
+(2, 'female');
 
 -- --------------------------------------------------------
 
@@ -177,9 +209,141 @@ INSERT INTO `item_types` (`ID`, `I_Type`) VALUES
 (12, 'Soups'),
 (13, 'Veal');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `O_ID` int(10) NOT NULL,
+  `U_ID` int(10) NOT NULL,
+  `Date` varchar(20) NOT NULL,
+  `Pickup_Type` int(10) NOT NULL,
+  `Total_Price` varchar(10) NOT NULL,
+  `Payment_Method` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `OI_ID` int(11) NOT NULL,
+  `O_ID` int(11) NOT NULL,
+  `I_ID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_method`
+--
+
+CREATE TABLE `payment_method` (
+  `P_ID` int(11) NOT NULL,
+  `method` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_method`
+--
+
+INSERT INTO `payment_method` (`P_ID`, `method`) VALUES
+(1, 'cash'),
+(2, 'visa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pickup_type`
+--
+
+CREATE TABLE `pickup_type` (
+  `ID` int(11) NOT NULL,
+  `pickup` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pickup_type`
+--
+
+INSERT INTO `pickup_type` (`ID`, `pickup`) VALUES
+(1, 'on-site'),
+(2, 'take-away');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rate`
+--
+
+CREATE TABLE `rate` (
+  `R_ID` int(10) NOT NULL,
+  `U_ID` int(10) NOT NULL,
+  `I_ID` int(10) NOT NULL,
+  `rate` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `U_ID` int(10) NOT NULL,
+  `FN` varchar(25) NOT NULL,
+  `LN` varchar(25) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(250) NOT NULL,
+  `img` varchar(250) NOT NULL,
+  `National_ID` int(25) NOT NULL,
+  `Gender` int(5) NOT NULL,
+  `Phone_Num` varchar(15) NOT NULL,
+  `U_Type` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_types`
+--
+
+CREATE TABLE `user_types` (
+  `ID` int(10) NOT NULL,
+  `user_Type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_types`
+--
+
+INSERT INTO `user_types` (`ID`, `user_Type`) VALUES
+(1, 'customer'),
+(2, 'cashier'),
+(3, 'manager');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`C_ID`),
+  ADD KEY `U_ID` (`U_ID`),
+  ADD KEY `I_ID` (`I_ID`);
+
+--
+-- Indexes for table `gender`
+--
+ALTER TABLE `gender`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `items`
@@ -195,8 +359,72 @@ ALTER TABLE `item_types`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`O_ID`),
+  ADD KEY `U_ID` (`U_ID`),
+  ADD KEY `Pickup_Type` (`Pickup_Type`),
+  ADD KEY `Payment_Method` (`Payment_Method`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`OI_ID`),
+  ADD KEY `O_ID` (`O_ID`),
+  ADD KEY `I_ID` (`I_ID`),
+  ADD KEY `quantity` (`quantity`);
+
+--
+-- Indexes for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  ADD PRIMARY KEY (`P_ID`);
+
+--
+-- Indexes for table `pickup_type`
+--
+ALTER TABLE `pickup_type`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `rate`
+--
+ALTER TABLE `rate`
+  ADD PRIMARY KEY (`R_ID`),
+  ADD KEY `U_ID` (`U_ID`),
+  ADD KEY `I_ID` (`I_ID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`U_ID`),
+  ADD KEY `U_Type` (`U_Type`),
+  ADD KEY `Gender` (`Gender`);
+
+--
+-- Indexes for table `user_types`
+--
+ALTER TABLE `user_types`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `C_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gender`
+--
+ALTER TABLE `gender`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `items`
@@ -211,14 +439,92 @@ ALTER TABLE `item_types`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `O_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `OI_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  MODIFY `P_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `pickup_type`
+--
+ALTER TABLE `pickup_type`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `rate`
+--
+ALTER TABLE `rate`
+  MODIFY `R_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `U_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_types`
+--
+ALTER TABLE `user_types`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`U_ID`) REFERENCES `users` (`U_ID`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`I_ID`) REFERENCES `items` (`I_ID`);
 
 --
 -- Constraints for table `items`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`I_Type`) REFERENCES `item_types` (`ID`);
+
+--
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`U_ID`) REFERENCES `users` (`U_ID`),
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`Pickup_Type`) REFERENCES `pickup_type` (`ID`),
+  ADD CONSTRAINT `order_ibfk_3` FOREIGN KEY (`Payment_Method`) REFERENCES `payment_method` (`P_ID`);
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`O_ID`) REFERENCES `order` (`O_ID`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`I_ID`) REFERENCES `items` (`I_ID`);
+
+--
+-- Constraints for table `rate`
+--
+ALTER TABLE `rate`
+  ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`U_ID`) REFERENCES `users` (`U_ID`),
+  ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`I_ID`) REFERENCES `items` (`I_ID`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Gender`) REFERENCES `gender` (`ID`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`U_Type`) REFERENCES `user_types` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
