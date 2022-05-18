@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2022 at 12:10 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: May 18, 2022 at 06:07 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -187,27 +187,29 @@ INSERT INTO `items` (`I_ID`, `Name`, `Description`, `Price`, `img`, `I_Type`) VA
 
 CREATE TABLE `item_types` (
   `ID` int(10) NOT NULL,
-  `I_Type` varchar(20) NOT NULL
+  `I_Type` varchar(20) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `image` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `item_types`
 --
 
-INSERT INTO `item_types` (`ID`, `I_Type`) VALUES
-(1, 'Appetizers'),
-(2, 'Beef'),
-(3, 'Chicken'),
-(4, 'Desserts'),
-(5, 'Drinks'),
-(6, 'Kids'),
-(7, 'Pasta'),
-(8, 'Pizza'),
-(9, 'Salads'),
-(10, 'Sandwiches'),
-(11, 'Seafood'),
-(12, 'Soups'),
-(13, 'Veal');
+INSERT INTO `item_types` (`ID`, `I_Type`, `description`, `image`) VALUES
+(1, 'Appetizers', 'Consider ordering a favorite appetizer and adding a large vegetable salad to go along with it.', '/Restaurant_Web_Project/Menu_images/home/Appetizers.jpg'),
+(2, 'Beef', 'A tender, flavorful,Cooked to order, served with sides that you choose, Cooked to perfection.', '/Restaurant_Web_Project/Menu_images/home/Beef.jpg'),
+(3, 'Chicken', 'From grilled chicken to Grand Restaurant chicken and shrimp fajita, our irresistible chicken dishes are very savory, topped with one of our mysteriously tasty sauces.', '/Restaurant_Web_Project/Menu_images/home/Chicken.jpg'),
+(4, 'Desserts', 'When it comes to dessert, the answer is always yes. Whether it is a cheesecake, brownies on ices or Oreo madness, you are to enjoy a fabulously amazing dessert.', '/Restaurant_Web_Project/Menu_images/home/Desserts.png'),
+(5, 'Drinks', 'Whether it is a fizzy drink or a natural juice, out cold drinks are the perfect accompaniments to your meal. Order one, get hydrated and stay cool!', '/Restaurant_Web_Project/Menu_images/home/Drinks.jpeg'),
+(6, 'Kids', '', '/Restaurant_Web_Project/Menu_images/home/Kids.jpg'),
+(7, 'Pasta', 'Whether it is spaghetti meatballs, penne arrabbiata or chicken mushroom pasta, Sizzler’s Pasta dishes are to melt in your mouth, accompanied by a blast of flavor.', '/Restaurant_Web_Project/Menu_images/home/Pasta.png'),
+(8, 'Pizza', '', '/Restaurant_Web_Project/Menu_images/home/Pizza.jpg'),
+(9, 'Salads', 'Discover all of our innovative selection of salads. From a simple mix green salad to a more flavorful strawberry one which are seriously over the top delicious.', '/Restaurant_Web_Project/Menu_images/home/Salads.jpg'),
+(10, 'Sandwiches', 'Cheer up your taste buds and tickle your appetite with one of our sandwiches.All our sandwiches contain no additives, no preservatives.', '/Restaurant_Web_Project/Menu_images/home/Sandwiches.jpg'),
+(11, 'Seafood', 'Grand Restaurant\'s seafood dishes are fabulously delicious and cooked to perfection. Grilled salmon and shrimp, fish fillet and seafood platter are sure to impress.', '/Restaurant_Web_Project/Menu_images/home/Seafood.png'),
+(12, 'Soups', 'Kick off your meal in style with our most-loved soups. Try our classic onion soup, cream of chicken soup, seafood bisque soup and creamy seafood.', '/Restaurant_Web_Project/Menu_images/home/Soups.jpg'),
+(13, 'Veal', '', '/Restaurant_Web_Project/Menu_images/home/Veal.jpg');
 
 -- --------------------------------------------------------
 
