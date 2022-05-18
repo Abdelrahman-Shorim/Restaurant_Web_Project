@@ -4,7 +4,7 @@ session_start();
   
 ?>
 <html>
-    <a href="batee5.php">click</a>
+    <a href="clear.php">click</a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <script>
         function getitems(x)

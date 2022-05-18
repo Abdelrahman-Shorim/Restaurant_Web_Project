@@ -67,45 +67,27 @@
 //  echo '<div >';
  while($result2=mysqli_fetch_array($result))
  {
-     echo "<div class='container'>";
+     echo "<div class='container' id='".$result2['ID']."' onclick='gotomenu(this.id)'>";
      echo '<img src="'.$result2['image'].'" alt="img" class="image">';
      echo '<div class="overlay overlayLeft">';
      echo '<div class="text">'.$result2['I_Type'].'</div>';
      echo '<div class="text2">'.$result2['description'].'</div>';
+     echo '<form id="menu'.$result2['ID'].'" action="menu.php" method="post" onsubmit="return addtocart()">';
+    echo '<input type="hidden" name="itemtypeid" value="'.$result2["ID"].'">';
+    echo '</form>';
      echo '</div>';
      echo '</div>';
+
      //  echo'<label id ="'. $result2["ID"].'" onclick="reload(this)">' .  $result2["I_Type"] . '</label>'.'<br>';
  }
 //  echo '</div>';
  mysqli_close($conn);
 
 ?>
-    <!-- <div class="container">
-        <img src="soup.JPG" alt="img" class="image">
-            <div class="overlay overlayLeft">
-                <div class="text">soup</div>
-            </div>
-    </div>
-
-<div class="container">
-<img src="beef.JPG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">beef</div>
-</div>
-</div>
-
-<div class="container">
-<img src="chicken.JPG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">chicken</div>
-</div>
-</div>
-
-<div class="container">
-<img src="desserts.PNG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">dessert</div>
-</div>
-</div> -->
+    <script>
+        function gotomenu(s){
+            document.getElementById('menu'+s).submit();
+        }
+    </script>
 </body>
 </html>
