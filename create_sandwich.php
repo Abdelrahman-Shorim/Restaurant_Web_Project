@@ -287,7 +287,7 @@
                     </div><!-- END title bta3 el section -->
 
                     <div><!-- el list bta3et el Sauces -->
-                        <input type="checkbox" id="MAYONNAISE" name="SAUCES" value="MAYONNAISE" onchange="additem(this)">
+                        <input type="checkbox" id="MAYONNAISE" name="Sauces" value="MAYONNAISE" onchange="additem(this)">
                         <label for="MAYONNAISE">MAYONNAISE</label><br>
 
                         <input type="checkbox" id="SPICY_MATONNAISE" name="SAUCES" value="SPICY_MATONNAISE" onchange="additem(this)">
@@ -358,7 +358,9 @@
     </body>
 
 
+<div id="test">
 
+</div>
 
     <script>
         function additem(node)
@@ -370,6 +372,39 @@
             let div=document.createElement('div'); // creates div that stores the selected image
             div.id=insert_section_div+name_of_node;
             div.innerHTML='<img src="/Restaurant_Web_Project/images/'+parent_node_id+'/'+name_of_node+'.png" alt="">';
+            // alert( '/Restaurant_Web_Project/images/'+parent_node_id+'/'+name_of_node+'.png');
+            image = '/Restaurant_Web_Project/images/'+parent_node_id+'/'+name_of_node+'.png';
+
+            let price =0;
+            if(parent_node_id==1){
+                price=15;
+            }
+            else if(parent_node_id==2){
+                price=20;
+            }
+            else if(parent_node_id==3){
+                price=10;
+            }
+            else if(parent_node_id==4){
+                price=10;
+            }
+            else {
+                price=5;
+            }
+            // jQuery.ajax(
+            //     {
+            //         url:"addtodatabase.php",
+            //         data:{
+            //             name:name_of_node,img:image,type:parent_node_id,price:price
+            //         },
+            //        type:"POST",
+            //        success:function(data)
+            //        {
+            //             $("#test").html(data);
+
+            //        }
+            //    }
+        //    );
 
             if(parent_node_id==1)
             {
