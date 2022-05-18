@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 06:07 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Generation Time: May 18, 2022 at 11:46 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -293,6 +293,115 @@ CREATE TABLE `rate` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sandwich_items`
+--
+
+CREATE TABLE `sandwich_items` (
+  `ID` int(10) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `price` int(10) NOT NULL,
+  `img` varchar(300) NOT NULL,
+  `Type` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sandwich_items`
+--
+
+INSERT INTO `sandwich_items` (`ID`, `Name`, `price`, `img`, `Type`) VALUES
+(1, 'RYE', 15, '/Restaurant_Web_Project/images/1/RYE.png', 1),
+(2, 'CROISSANT', 15, '/Restaurant_Web_Project/images/1/CROISSANT.png', 1),
+(3, 'WHOLE_WHEAT', 15, '/Restaurant_Web_Project/images/1/WHOLE_WHEAT.png', 1),
+(4, 'WHITE', 15, '/Restaurant_Web_Project/images/1/WHITE.png', 1),
+(5, 'GLUTEN_FREE', 15, '/Restaurant_Web_Project/images/1/GLUTEN_FREE.png', 1),
+(6, 'TURKEY', 20, '/Restaurant_Web_Project/images/2/TURKEY.png', 2),
+(7, 'ROAST_BEEF', 20, '/Restaurant_Web_Project/images/2/ROAST_BEEF.png', 2),
+(8, 'HAM', 20, '/Restaurant_Web_Project/images/2/HAM.png', 2),
+(9, 'PROSCIUTTO', 20, '/Restaurant_Web_Project/images/2/PROSCIUTTO.png', 2),
+(10, 'CORNED_BEEF', 20, '/Restaurant_Web_Project/images/2/CORNED_BEEF.png', 2),
+(11, 'PASTRAMI', 20, '/Restaurant_Web_Project/images/2/PASTRAMI.png', 2),
+(12, 'GENOA_SALAMI', 20, '/Restaurant_Web_Project/images/2/GENOA_SALAMI.png', 2),
+(13, 'SOPPRESSATA', 20, '/Restaurant_Web_Project/images/2/SOPPRESSATA.png', 2),
+(14, 'CAPOCOLLO', 20, '/Restaurant_Web_Project/images/2/CAPOCOLLO.png', 2),
+(15, 'PEPPERONI', 20, '/Restaurant_Web_Project/images/2/PEPPERONI.png', 2),
+(16, 'BAKED_CHICKEN', 20, '/Restaurant_Web_Project/images/2/BAKED_CHICKEN.png', 2),
+(17, 'BACON', 20, '/Restaurant_Web_Project/images/2/BACON.png', 2),
+(18, 'CHICKEN_SALAD', 20, '/Restaurant_Web_Project/images/2/CHICKEN_SALAD.png', 2),
+(19, 'TUNA_SALAD', 20, '/Restaurant_Web_Project/images/2/TUNA_SALAD.png', 2),
+(20, 'EGG_SALAD', 20, '/Restaurant_Web_Project/images/2/EGG_SALAD.png', 2),
+(21, 'SWISS', 10, '/Restaurant_Web_Project/images/3/SWISS.png', 3),
+(22, 'PROVOLONE', 10, '/Restaurant_Web_Project/images/3/PROVOLONE.png', 3),
+(23, 'MOZZARELLA', 10, '/Restaurant_Web_Project/images/3/MOZZARELLA.png', 3),
+(24, 'CHEDDAR', 10, '/Restaurant_Web_Project/images/3/CHEDDAR.png', 3),
+(25, 'PEPPER_JACK', 10, '/Restaurant_Web_Project/images/3/PEPPER_JACK.png', 3),
+(26, 'MUENSTER', 10, '/Restaurant_Web_Project/images/3/MUENSTER.png', 3),
+(27, 'AMERICAN', 10, '/Restaurant_Web_Project/images/3/AMERICAN.png', 3),
+(28, 'BRIE', 10, '/Restaurant_Web_Project/images/3/BRIE.png', 3),
+(29, 'RICOTTA', 10, '/Restaurant_Web_Project/images/3/RICOTTA.png', 3),
+(30, 'PARMESAN', 10, '/Restaurant_Web_Project/images/3/PARMESAN.png', 3),
+(31, 'FETA', 10, '/Restaurant_Web_Project/images/3/FETA.png', 3),
+(32, 'TOMATOES', 10, '/Restaurant_Web_Project/images/4/TOMATOES.png', 4),
+(33, 'LETTUCE', 10, '/Restaurant_Web_Project/images/4/LETTUCE.png', 4),
+(34, 'ONIONS', 10, '/Restaurant_Web_Project/images/4/ONIONS.png', 4),
+(35, 'ARUGULA', 10, '/Restaurant_Web_Project/images/4/ARUGULA.png', 4),
+(36, 'SPINACH', 10, '/Restaurant_Web_Project/images/4/SPINACH.png', 4),
+(37, 'KALE', 10, '/Restaurant_Web_Project/images/4/KALE.png', 4),
+(38, 'ALFALFA_SPROUTS', 10, '/Restaurant_Web_Project/images/4/ALFALFA_SPROUTS.png', 4),
+(39, 'CUCUMBERS', 10, '/Restaurant_Web_Project/images/4/CUCUMBERS.png', 4),
+(40, 'PICKLES', 10, '/Restaurant_Web_Project/images/4/PICKLES.png', 4),
+(41, 'MUSHROOMS', 10, '/Restaurant_Web_Project/images/4/MUSHROOMS.png', 4),
+(42, 'OLIVES', 10, '/Restaurant_Web_Project/images/4/OLIVES.png', 4),
+(43, 'BANANA_PEPPERS', 10, '/Restaurant_Web_Project/images/4/BANANA_PEPPERS.png', 4),
+(44, 'JALAPENOS', 10, '/Restaurant_Web_Project/images/4/JALAPENOS.png', 4),
+(45, 'ROASTED_RED_PEPPERS', 10, '/Restaurant_Web_Project/images/4/ROASTED_RED_PEPPERS.png', 4),
+(46, 'SLICED_APPLE', 10, '/Restaurant_Web_Project/images/4/SLICED_APPLE.png', 4),
+(47, 'COLESLAW', 10, '/Restaurant_Web_Project/images/4/COLESLAW.png', 4),
+(48, 'SAUERKRAUT', 10, '/Restaurant_Web_Project/images/4/SAUERKRAUT.png', 4),
+(49, 'KETTLE_COOKED_CHIPS', 10, '/Restaurant_Web_Project/images/4/KETTLE_COOKED_CHIPS.png', 4),
+(50, 'AVOCADO', 10, '/Restaurant_Web_Project/images/4/AVOCADO.png', 4),
+(51, 'MAYONNAISE', 5, '/Restaurant_Web_Project/images/5/MAYONNAISE.png', 5),
+(52, 'SPICY_MATONNAISE', 5, '/Restaurant_Web_Project/images/5/SPICY_MATONNAISE.png', 5),
+(53, 'SPICY_BROWN_MUSTARD', 5, '/Restaurant_Web_Project/images/5/SPICY_BROWN_MUSTARD.png', 5),
+(54, 'DIJON_MUSTARD', 5, '/Restaurant_Web_Project/images/5/DIJON_MUSTARD.png', 5),
+(55, 'HONEY_MUSTARD', 5, '/Restaurant_Web_Project/images/5/HONEY_MUSTARD.png', 5),
+(56, 'OIL&VINEGAR', 5, '/Restaurant_Web_Project/images/5/OIL&VINEGAR.png', 5),
+(57, 'PESTO', 5, '/Restaurant_Web_Project/images/5/PESTO.png', 5),
+(58, 'BALSAMIC_DRESSING', 5, '/Restaurant_Web_Project/images/5/BALSAMIC_DRESSING.png', 5),
+(59, 'RUSSIAN_DRESSING', 5, '/Restaurant_Web_Project/images/5/RUSSIAN_DRESSING.png', 5),
+(60, 'HORSERADISH', 5, '/Restaurant_Web_Project/images/5/HORSERADISH.png', 5),
+(61, 'BBQ_SAUCE', 5, '/Restaurant_Web_Project/images/5/BBQ_SAUCE.png', 5),
+(62, 'RANCH', 5, '/Restaurant_Web_Project/images/5/RANCH.png', 5),
+(63, 'TZATZIKI', 5, '/Restaurant_Web_Project/images/5/TZATZIKI.png', 5),
+(64, 'SRIRACHA', 5, '/Restaurant_Web_Project/images/5/SRIRACHA.png', 5),
+(65, 'THAI_PEANUT', 5, '/Restaurant_Web_Project/images/5/THAI_PEANUT.png', 5),
+(66, 'HONEY', 5, '/Restaurant_Web_Project/images/5/HONEY.png', 5),
+(67, 'HUMMUS', 5, '/Restaurant_Web_Project/images/5/HUMMUS.png', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sandwich_types`
+--
+
+CREATE TABLE `sandwich_types` (
+  `ID` int(11) NOT NULL,
+  `Type` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sandwich_types`
+--
+
+INSERT INTO `sandwich_types` (`ID`, `Type`) VALUES
+(1, 'Bread'),
+(2, 'Protein'),
+(3, 'Cheese'),
+(4, 'Toppings'),
+(5, 'Sauces');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -308,6 +417,17 @@ CREATE TABLE `users` (
   `Phone_Num` varchar(15) NOT NULL,
   `U_Type` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`U_ID`, `FN`, `LN`, `Email`, `Password`, `img`, `National_ID`, `Gender`, `Phone_Num`, `U_Type`) VALUES
+(1, 'mina', 'Abdo', '@gmail', '123', 'a', 1231321, 1, '31313', 1),
+(2, 'Abdelrahman', 'Ayman', '@gmail', '123', 'bleach.jpg', 1234556, 1, '123345', 1),
+(3, 'mina', 'antoun', 'mina@gmail.com', '123', 'Bleach-Wallpaper-hd.jpg', 123, 1, '0123', 1),
+(4, 'Ramez', 'Sherif', 'r@gmail.com', '123', 'bleach.jpg', 99213131, 1, '012213', 1),
+(5, 'Ramez', 'Sherif', 'r@gmail.com', '123', 'bleach.jpg', 99213131, 1, '012213', 1);
 
 -- --------------------------------------------------------
 
@@ -399,6 +519,19 @@ ALTER TABLE `rate`
   ADD KEY `I_ID` (`I_ID`);
 
 --
+-- Indexes for table `sandwich_items`
+--
+ALTER TABLE `sandwich_items`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Type` (`Type`);
+
+--
+-- Indexes for table `sandwich_types`
+--
+ALTER TABLE `sandwich_types`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -471,10 +604,22 @@ ALTER TABLE `rate`
   MODIFY `R_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `sandwich_items`
+--
+ALTER TABLE `sandwich_items`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `sandwich_types`
+--
+ALTER TABLE `sandwich_types`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `U_ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `U_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_types`
@@ -520,6 +665,12 @@ ALTER TABLE `order_items`
 ALTER TABLE `rate`
   ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`U_ID`) REFERENCES `users` (`U_ID`),
   ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`I_ID`) REFERENCES `items` (`I_ID`);
+
+--
+-- Constraints for table `sandwich_items`
+--
+ALTER TABLE `sandwich_items`
+  ADD CONSTRAINT `sandwich_items_ibfk_1` FOREIGN KEY (`Type`) REFERENCES `sandwich_types` (`ID`);
 
 --
 -- Constraints for table `users`
