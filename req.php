@@ -25,5 +25,5 @@
         echo "</div>";
     mysqli_close($conn);
 
-    ?>
+?>
 </html>
