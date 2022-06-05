@@ -55,14 +55,13 @@ div.myclass{
   width: 100px;
 }
 
-div.m{
+body{
                 margin: 0;
                 padding: 0;
                 height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: max;
                 /*background: #23E3C9;*/ 
             }
 
@@ -180,8 +179,9 @@ div.m{
     </style>
 
 <body>
-<div class="m">
+
 <!--slider body start-->
+<div class="myclass">
 <div class="slider">
             <div class="slides">
                 <input type="radio" name="radio-btn" id="radio1">
@@ -219,7 +219,7 @@ div.m{
             
             <!--manual navigation-->
         </div>
-        
+        </div>
 
         <script type="text/javascript">
             var counter=1;
@@ -233,7 +233,7 @@ div.m{
         </script>
 
 <!--slider body end-->
-        </div>
+
 
 <?php
  $servername = "localhost";
