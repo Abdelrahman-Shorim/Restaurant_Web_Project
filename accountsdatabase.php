@@ -1,4 +1,7 @@
+//<<<<<<< cartt
 
+//=======
+//>>>>>>> main
 <?php
 $server = "localhost";
 $user = "root";
@@ -10,18 +13,25 @@ $conn = mysqli_connect($server, $user, $pass, $db );
 if(!$conn){
 die ("Connection failed" . mysqli_connect_error());
 }
+//<<<<<<< cartt
 $check="SELECT * FROM Users";
 $res=mysqli_query($conn,$check);
+//=======
+//>>>>>>> main
 
 $valid = true;
 
 if(isset($_POST['submit'])){ 
+//<<<<<<< cartt
   if(is_uploaded_file($_FILES['img']['tmp_name'])){
+//=======
+//>>>>>>> main
   $imagename=$_FILES['img']['name'];
   $imagetype=$_FILES['img']['type'];
   $imageerror=$_FILES['img']['error'];
   $imagetemp=$_FILES['img']['tmp_name'];
   $imagepath="Profile_pictures/";
+//<<<<<<< cartt
     $img=$imagepath.$_POST['email'];}
 else{
 echo"im herez";
@@ -38,6 +48,11 @@ $img="Profile_pictures/default.png";
         }
   
     }    
+//=======
+//$img=$imagepath.$_POST['email'];
+  //  if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)==true) {
+    
+//>>>>>>> main
       } else {
         echo("$_POST[email] is not a valid email address \n");
         $valid = false;
@@ -79,8 +94,13 @@ if(($conn->query($sql))==true){
 if(is_uploaded_file($imagetemp))
 {
   // echo $imagetemp;
+//<<<<<<< cartt
   
     if(move_uploaded_file($imagetemp,$img))
+//=======
+  //echo "\n ".$imagepath.$_POST['email']."    hiiiii";
+ // if(move_uploaded_file($imagetemp, $imagepath.$_POST['email']))
+//>>>>>>> main
     {
         echo "successfully uploaded your image";
     }
@@ -91,7 +111,11 @@ if(is_uploaded_file($imagetemp))
 }
 else
 {
+//<<<<<<< cartt
     echo "failed to upload your imagez";
+//=======
+  //  echo "failed to upload your image";
+//>>>>>>> main
 }
 
 
@@ -107,5 +131,9 @@ echo "im here";
 
 }
 $conn->close();
+//<<<<<<< cartt
 ?>
 
+//=======
+//?>
+//>>>>>>> main
