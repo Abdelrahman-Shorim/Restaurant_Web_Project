@@ -1,69 +1,18 @@
-<html>
-<style>
-.container{
-    position:relative;
-    width: 500px;
-    height: 500px;
-    display: inline-block;
-}
-.image{
-    display:block;
-    width: 500px;
-    height: 500px;
-}
-.overlay{
-    position: absolute;
-    transition: all .4s ease;
-    opacity:0;
-    background-color: #eee;
-}
-.text{
-    color: black;
-    font-family: sans-serif;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 20px;
-}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Image Slider</title>
 
-.text2{
-    color: black;
-    font-family: sans-serif;
-    position: absolute;
-    top: 70%;
-    left: 5%;
-    font-size: 20px;
-}
-.container:hover .overlay{
-    opacity:1;
-    background: rgba(192,192,192,0.6);
-}
-.overlayLeft{
-    height: 100%;
-    width: 0;
-    top: 0;
-    left: 0;
-}
-.container:hover .overlayLeft{
-    width: 100%;
-}
-
-/*slider css*/
-
-div.myclass{
-    height: 400px;
-  width: 100px;
-}
-
-div.m{
+        <style>
+            body{
                 margin: 0;
                 padding: 0;
                 height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: max;
-                /*background: #23E3C9;*/ 
+                background: #23E3C9; 
             }
 
             .slider{
@@ -177,12 +126,11 @@ div.m{
                 background: #40D3DC;
             }
 
-    </style>
+        </style>
 
-<body>
-<div class="m">
-<!--slider body start-->
-<div class="slider">
+    </head>
+    <body>
+        <div class="slider">
             <div class="slides">
                 <input type="radio" name="radio-btn" id="radio1">
                 <input type="radio" name="radio-btn" id="radio2">
@@ -216,10 +164,8 @@ div.m{
                     <label for="radio4" class="manual-btn"></label>
                 </div>
             </div>
-            
             <!--manual navigation-->
         </div>
-        
 
         <script type="text/javascript">
             var counter=1;
@@ -232,64 +178,6 @@ div.m{
             }, 5000);
         </script>
 
-<!--slider body end-->
-        </div>
+    </body>
 
-<?php
- $servername = "localhost";
- $username = "root";
- $password = "";
- $dbname = "restaurant_web_project";
-
- $conn = new mysqli($servername, $username, $password, $dbname);
- if($conn->connect_error) die("fatal Error");
-
- $query="SELECT * FROM item_types";
- $result=$conn->query($query);
- if(!$result) die("fatal Error");
-
-  echo '<div >';
- while($result2=mysqli_fetch_array($result))
- {
-     echo "<div class='container'>";
-     echo '<img src="'.$result2['image'].'" alt="img" class="image">';
-     echo '<div class="overlay overlayLeft">';
-     echo '<div class="text">'.$result2['I_Type'].'</div>';
-     echo '<div class="text2">'.$result2['description'].'</div>';
-     echo '</div>';
-     echo '</div>';
-     //  echo'<label id ="'. $result2["ID"].'" onclick="reload(this)">' .  $result2["I_Type"] . '</label>'.'<br>';
- }
-  echo '</div>';
- mysqli_close($conn);
-
-?>
-    <!-- <div class="container">
-        <img src="soup.JPG" alt="img" class="image">
-            <div class="overlay overlayLeft">
-                <div class="text">soup</div>
-            </div>
-    </div>
-
-<div class="container">
-<img src="beef.JPG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">beef</div>
-</div>
-</div>
-
-<div class="container">
-<img src="chicken.JPG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">chicken</div>
-</div>
-</div>
-
-<div class="container">
-<img src="desserts.PNG" alt="img" class="image">
-<div class="overlay overlayLeft">
-<div class="text">dessert</div>
-</div>
-</div> -->
-</body>
 </html>
