@@ -98,13 +98,14 @@
         
         function changetype(y)
         {
-            if(check()) {
+            // if(check()) {
+                // alert(value);
                 document.getElementById("nav"+value).className="";
-                document.getElementById(value).style.display="none";
+                document.getElementById("sandwichtype"+value).style.display="none";
                 value=y;
-                document.getElementById(value).style.display="inline";
+                document.getElementById("sandwichtype"+value).style.display="inline";
                 document.getElementById("nav"+value).className="active";
-            }
+            // }
         }
         function go(y){
             jQuery.ajax(
@@ -134,6 +135,8 @@
             }
         }
     </script>
+
+
 
     <body>
     <div class="topnav">

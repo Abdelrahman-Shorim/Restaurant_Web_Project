@@ -20,9 +20,9 @@
 
 
         if($row['ID']==$_POST['breadid'])
-            echo "<div id='".$row['ID']."' >";
+            echo "<div id='sandwichtype".$row['ID']."' >";
         else
-            echo "<div  id='".$row['ID']."'  style='display: none;'>";
+            echo "<div  id='sandwichtype".$row['ID']."'  style='display: none;'>";
         while($row2=mysqli_fetch_array($result2))
         {
             if($row['ID']==$_POST['breadid'])
