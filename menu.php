@@ -97,7 +97,10 @@ session_start();
     </div>
         <!-- <a href="cart_page.php" class="fas fa-shopping-cart"> </a> -->
         <a href="cart_page.php" class="icon-wrapper fas fa-shopping-cart cart-icon" data-number="<?php if(isset($_SESSION['counter'])){echo $_SESSION['counter'];} else echo "0"; ?>"> </a>
-        <i value="" class="img-wrapper fas " id=""  ><img src=<?php echo $_SESSION['Image'];?>></i>
+        <a href="profile.php"style='font-size:24px' class='fas'>&#xf406; </a>
+        <!-- <i value="" class="img-wrapper fas " id=""  ><img src=
+        <?php //echo $_SESSION['Image'];?>
+        ></i> -->
     </div>
 
 </header>
@@ -259,7 +262,7 @@ border-radius:50%;
 z-index: -1;
 /* animation:spin 3s linear infinite;} */
  }
-//<<<<<<< searchimplemnation
+
 
 .search-box{
     position:absolute;
@@ -312,6 +315,3 @@ text-decoration: none;}
     });
   });
 </script>
-//=======
-//</style>
-//>>>>>>> main

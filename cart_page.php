@@ -62,7 +62,7 @@ header("location:menu.php");
 <div style="padding-top:75px;">
 <?php
 
-if(isset($_SESSION['counter'])) {
+if(isset($_SESSION['counter'])&&$_SESSION['counter']!=0) {
 
 echo "<table class='table table-hover'>
     <thead>
