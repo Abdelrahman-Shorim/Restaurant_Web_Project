@@ -6,31 +6,16 @@ session_start();
     <meta charset="UTF-8">
     <title>Grand Resturant</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"href="homepage.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <div class="full-page">
-        <div class="navbar">
-            <div>
-                <a href='website.php'class="logo"><i class="fas fa-utensils"></i>Grand Restaurant</a>
-
-                
-            </div>
-            <!-- <video autoplay muted loop id="myVideo">
-  <source src="video.mp4" type="video/mp4">
-</video> -->
-            <nav>
-                <ul id='MenuItems'>
-                    <li><a href='website.php'>Home</a></li>
-                    <li><a href='#'>About Us</a></li>
-                    <li><a href='#'>Services</a></li>
-                    <li><a href='#'>Contact</a></li>
-                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Login</button></li>
-                </ul>
-            </nav>
-        </div>
-        <div id='login-form'class='login-page'>
+    <div class="full-page hero">
+    <video autoplay loop muted plays-inline class="back-video">
+    <source src="Background/video.mp4"type="video/mp4">
+</video> 
+      
             <div class="form-box">
                 <div class='button-box'>
                     <div id='btn'></div>
@@ -42,8 +27,8 @@ session_start();
                     <p class="error"><?php echo $_GET['error']; ?></p>
                     <?php } ?>
                     <input type='text'class='input-field'placeholder='Email Address' required name = "email">
-		    <input type='password'class='input-field'placeholder=' Password' required name="password" >
-		    <input type='checkbox'class='check-box'><span>Remember Password</span>
+		    <input type='password'class='input-field'placeholder=' Password' required name="password" id="password">
+		    <input type='checkbox'class='check-box' ><span style="color:white;">Remember Password</span>
 		    <button type='submit'class='submit-btn'><b>Log in</b></button>
         
 		 </form>
@@ -59,7 +44,7 @@ session_start();
 		     <input type='text'class='input-field'placeholder='Email Address' required name="email"> 
 		   <input type='password'class='input-field'placeholder='Password' required name="password"> 
 		    <input type='password'class='input-field'placeholder='Confirm Password'  required name="confirmpassword">
-		     <div style="color: #999;"><input type='checkbox' class='check-box'> I agree to the terms and conditions</div>
+		     <div style="color: white;"><input type='checkbox' class='check-box'> I agree to the terms and conditions</div>
              <button type='submit'class='submit-btn' name='submit'><b>Register</b></button>
                    <!-- <input type='submit'class='submit-btn' value="Register"> -->
 	         </form>
@@ -82,18 +67,8 @@ session_start();
 			y.style.left='450px';
 			z.style.left='0px';
 		}
+       
 	</script>
-	<script>
-        var modal = document.getElementById('login-form');
-        window.onclick = function(event) 
-        {
-            if (event.target == modal) 
-            {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
 
 
 

@@ -89,8 +89,12 @@ session_start();
 
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
+        <div class="search-box">
+            <input type="text" placeholder="Search...." id="search">
+        <a href="#" class="icon">
         <i class="fas fa-search" id="search-icon"></i>
-        
+        </a>    
+    </div>
         <!-- <a href="cart_page.php" class="fas fa-shopping-cart"> </a> -->
         <a href="cart_page.php" class="icon-wrapper fas fa-shopping-cart cart-icon" data-number="<?php if(isset($_SESSION['counter'])){echo $_SESSION['counter'];} else echo "0"; ?>"> </a>
         <i value="" class="img-wrapper fas " id=""  ><img src=<?php echo $_SESSION['Image'];?>></i>
@@ -255,4 +259,59 @@ border-radius:50%;
 z-index: -1;
 /* animation:spin 3s linear infinite;} */
  }
+//<<<<<<< searchimplemnation
+
+.search-box{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background:white;
+    padding:10px;
+
+}
+.search-box:hover>input{width:200px;
+padding:0 10px;
+}
+.search-box:hover>.icon{background: #536179;}
+.search-box.icon:hover{transform:rotate(360deg)
+scale(0.8);}
+.search-box input{width:0; border:none; outline:none; padding:0; background:none; font-size:1.1rem; transition:0.5s ease; line-height:40px; color:black;}
+.icon{color:#21DFCD;
+float:right;
+width:40px;
+font-size:1.3rem;
+height:40px;
+border-radius:50%;
+background:#2f3640;
+display:flex;
+justify-content: center;
+align-items:center;
+transition:0.4s;
+cursor:pointer;
+text-decoration: none;}
 </style>
+<script> 
+  $(document).ready(function(){
+    //Starting the fuction so it can start the search 
+    $("#search").keypress(function()
+    //when the key is pressed the function is activated 
+    {
+      
+      //using the class ajax with the type of POST , url of the other site which has the part of searching inside the database and the data is the values which come from the text form with the id "search"
+      $.ajax({
+        type:'POST',
+        url:'searchtest.php',
+        data:{
+          name:$("#search").val(),//sending the data with values in the search to the url searchtest
+        },
+        success:function(data){
+          $("#itemsdata").html(data);
+        }// when the function returns the data values and it's successful. The data will be sent  to the table body with the id of "output" ("the data that came from the search function from the other site")
+      });
+    });
+  });
+</script>
+//=======
+//</style>
+//>>>>>>> main
