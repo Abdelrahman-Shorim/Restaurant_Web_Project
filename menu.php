@@ -118,6 +118,21 @@ session_start();
                }
            );
         }
+
+        function getsandwich()
+        {
+            jQuery.ajax(
+                {
+                    url:"create_sandwich.php",
+                    // data:'id='+x,
+                //    type:"POST",
+                   success:function(data)
+                   {
+                        $("#itemsdata").html(data);
+                   }
+                }
+            );
+        }
     </script>
 
 <?php
@@ -135,6 +150,7 @@ session_start();
     {
         echo'<label id ="'. $result2["ID"].'" onclick="getitems(this.id)">' .  $result2["I_Type"] . '</label>'.'<br>';
     }
+    echo'<label onclick="getsandwich()">Create Sandwich</label>'.'<br>';
     echo '</div>';
     mysqli_close($conn);
     ?>

@@ -3,9 +3,9 @@
         .sidenav {
             height: 100%; /*Full-height: remove this if you want "auto" height*/
             width: 290px; /* Set the width of the sidebar */
-            position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+            position: fixed; Fixed Sidebar (stay in place on scroll)
             z-index: 1; /* Stay on top */
-            top: 60; /* Stay at the top */
+            top: 160; /* Stay at the top */
             right: 40;
             padding-top: 4px;
         }
@@ -31,7 +31,10 @@
         /* Add a black background color to the top navigation */
         .topnav {
             background-color: #333;
-            overflow: hidden;
+            position: fixed;
+            /* overflow: hidden; */
+            top: 100; /* Stay at the top */
+            right: 700;
         }
 
         /* Style the links inside the navigation bar */
@@ -166,9 +169,9 @@
         <div class ="items"> <!-- div bta3et el items --> </div><br>
     </div><!-- END el div ely feha kol 7aga -->
 
-    <div><!-- makan el sowar -->
-        <div id="sec_1_img" >  <!-- first section --></div> <!-- END first section -->
-        <div id="sec_2_img" >  <!-- 2nd section --></div> <!-- END 2nd section -->
+    <div style="height: 200px;width: 200px;position: static;top:400px;"><!-- makan el sowar -->
+        <div style="height: 200px;width: 200px;top:400px;" id="sec_1_img" >  <!-- first section --></div> <!-- END first section -->
+        <div style="height: 200px;width: 200px;top:400px;" id="sec_2_img" >  <!-- 2nd section --></div> <!-- END 2nd section -->
     </div><!-- END   makan el sowar -->
     </body>    
 </html>
