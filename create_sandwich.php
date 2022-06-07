@@ -5,7 +5,7 @@
             width: 290px; /* Set the width of the sidebar */
             position: fixed; /* Fixed Sidebar (stay in place on scroll) */
             z-index: 1; /* Stay on top */
-            top: 60; /* Stay at the top */
+            top: 160; /* Stay at the top */
             right: 40;
             padding-top: 4px;
         }
@@ -31,7 +31,10 @@
         /* Add a black background color to the top navigation */
         .topnav {
             background-color: #333;
-            overflow: hidden;
+            position: fixed;
+            /* overflow: hidden; */
+            top: 100px;
+            right: 700px;
         }
 
         /* Style the links inside the navigation bar */
@@ -50,8 +53,8 @@
         }
         /* Add a color to the active/current link */
         .topnav label.active{
-        background-color: #04AA6D;
-        color: white;
+            background-color: #04AA6D;
+            color: white;
         }
     </style>
     <head>
@@ -166,9 +169,9 @@
         <div class ="items"> <!-- div bta3et el items --> </div><br>
     </div><!-- END el div ely feha kol 7aga -->
 
-    <div><!-- makan el sowar -->
+    <div style="background-color: #DBF9FC;padding: 200px 440px;"><!-- makan el sowar -->
         <div id="sec_1_img" >  <!-- first section --></div> <!-- END first section -->
-        <div id="sec_2_img" >  <!-- 2nd section --></div> <!-- END 2nd section -->
+        <div id="sec_2_img" style="height: 100px;width: 200px;top:400px;">  <!-- 2nd section --></div> <!-- END 2nd section -->
     </div><!-- END   makan el sowar -->
     </body>    
-</html>
+</html> 

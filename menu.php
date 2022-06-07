@@ -3,6 +3,9 @@ session_start();
     // echo "<script>alert('quantity: ".$_POST['quantity']."')</script>";
   
 ?>
+<script>
+    let chosentype=-1;
+</script>
 
 <html>
     <head>
@@ -106,17 +109,43 @@ session_start();
     <script>
         function getitems(x)
         {
+            if(chosentype!=-1)
+            {
+                document.getElementById(chosentype).style.removeProperty("color");
+            }
+            chosentype=x;
+            document.getElementById(chosentype).style.color="#f4b41a";
+            if(x==0)
+            {
+                getsandwich();
+            }
+            else{
+                jQuery.ajax(
+                    {
+                        url:"typeitems.php",
+                        data:'id='+x,
+                    type:"POST",
+                    success:function(data)
+                    {
+                            $("#itemsdata").html(data);
+                    }
+                }
+            );
+            }
+        }
+        function getsandwich()
+        {
             jQuery.ajax(
                 {
-                    url:"typeitems.php",
-                    data:'id='+x,
-                   type:"POST",
+                    url:"create_sandwich.php",
+                    // data:'id='+x,
+                //    type:"POST",
                    success:function(data)
                    {
                         $("#itemsdata").html(data);
                    }
-               }
-           );
+                }
+            );
         }
     </script>
 
@@ -135,6 +164,7 @@ session_start();
     {
         echo'<label id ="'. $result2["ID"].'" onclick="getitems(this.id)">' .  $result2["I_Type"] . '</label>'.'<br>';
     }
+    echo'<label id="0" onclick="getitems(this.id)">Create Sandwich</label>'.'<br>';
     echo '</div>';
     mysqli_close($conn);
     ?>
@@ -143,6 +173,7 @@ session_start();
 <div id="itemsdata"> <!-- check law fe item type ama ydoos back mel view item -->
     <?php
         if(isset($_POST['itemtypeid'])) {
+            echo "<script>chosentype='".$_POST['itemtypeid']."';</script>";
             echo '<script>getitems('.$_POST['itemtypeid'].')</script>';
         }
     ?>
@@ -223,5 +254,5 @@ border-bottom-color:#ababab;
 border-radius:50%;
 z-index: -1;
 /* animation:spin 3s linear infinite;} */
-
+ }
 </style>
