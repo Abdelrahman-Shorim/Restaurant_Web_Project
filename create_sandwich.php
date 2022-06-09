@@ -1,4 +1,8 @@
 <html>
+<?php
+session_start();
+
+?>
     <style>
         .sidenav {
             height: 100%; /*Full-height: remove this if you want "auto" height*/
@@ -143,7 +147,7 @@
 
 
     <body>
-    <div id="sitems">hello</div>
+    <div id="sitems"></div>
 
     <div class="topnav">
         <?php
@@ -178,7 +182,8 @@
         <div class ="items"> <!-- div bta3et el items --> </div><br>
 
         <div class="buttons"> <!-- div bta3et el next wel back -->
-                <input type="button" value="Add to cart" onclick="addtocartsandwich()">
+        <button  onclick="addtocartsandwich()">Add to cart</button>
+                <!-- // <input type="button" value="Add to cart" onclick="addtocartsandwich()"> -->
             </div> <!-- END   div bta3et el next wel back -->
     </div><!-- END el div ely feha kol 7aga -->
 
@@ -193,7 +198,9 @@
             var sitems= [];
 
 
-            sitems.push(document.querySelector('input[name="Bread"]:checked').value);
+            alert('hi');
+            // if(document.querySelector('input[name="Bread"]:checked').value==true)
+                sitems.push(document.querySelector('input[name="Bread"]:checked').value);
 
 
             var markedCheckbox = document.getElementsByName('Protein');
@@ -226,12 +233,26 @@
             }
 
 
+            // alert(sitems[0]);
+            jQuery.ajax(
+                {
+                    url:"create_sandwich_cart.php",
+                    type:'post',
+                    data:{
+                        data:sitems
+                    },
+                    success:function(data)
+                    {
+                        $("#sitems").html(data);
+                    }
+                }
+            );
             // // alert(sitems.length)
             // document.getElementById("sitems").innerHTML="";
             // for(t=0;t<sitems.length;t++)
             // {
             // //     alert(sitems[t]);
-            //     document.getElementById("sitems").append(sitems[t]+"  ");
+            //     document.getElementById("sitems").append(sitems[t]+"<br>  ");
             // }
 
             

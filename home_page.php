@@ -1,4 +1,8 @@
 <html>
+    <?php
+    session_start();
+    session_destroy();
+    ?>
 <style>
 .container{
     position:relative;
