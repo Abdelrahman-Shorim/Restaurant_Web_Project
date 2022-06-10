@@ -3,10 +3,30 @@ session_start();
     ?>
 <html>
 <head>
+  <script>
+function profiledit(){
+
+  $.ajax({
+url:"editprofile.php" ,
+data: email:"",
+type: "POST" , 
+success: function(data){
+$("#profile").html(data);
+}
+});
+
+}
+  </script>
+
+
+
     <link rel="stylesheet" href="menuStyle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">//Including apis of google library </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">//Including cloudflare library</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">//Including bootstrapccdn library</script> 
 <header>
     
     <a href="#" class="logo"><i class="fas fa-utensils"></i>Grand Restaurant</a>
@@ -28,34 +48,35 @@ session_start();
 <body>
     <div style="padding-top: 100px;">
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "restaurant_web_project";
+// $server = "localhost";
+// $user = "root";
+// $pass = "";
+// $db = "restaurant_web_project";
 
-$conn = mysqli_connect($server, $user, $pass, $db );
-if(!$conn){
-die ("Connection failed" . mysqli_connect_error());
-}
-$email = $_SESSION['email'];
- $sql="SELECT * from users where Email='$email'";
- $result = mysqli_query($conn,$sql);
- while($result2=mysqli_fetch_array($result)){
-    echo' <div class="card">';
-    echo "<img src=".$result2['img']." style = "."width:100%".">"."<br>"."<br>";
-    echo "<h1>".$result2['FN']." ".$result2['LN']."</h1>"."<br>"."<br>"."<br>";
+// $conn = mysqli_connect($server, $user, $pass, $db );
+// if(!$conn){
+// die ("Connection failed" . mysqli_connect_error());
+// }
+// $email = $_SESSION['email'];
+//  $sql="SELECT * from users where Email='$email'";
+//  $result = mysqli_query($conn,$sql);
+//  while($result2=mysqli_fetch_array($result)){
+    echo' <div id="profile"  class="card">';
+    echo "<img src=".$_SESSION['Image']." style = "."width:100%".">"."<br>"."<br>";
+    echo "<h1>".$_SESSION['Firstname']." ".$_SESSION['lastname']."</h1>"."<br>"."<br>"."<br>";
     // echo "<h1>".$result2['LN']."</h1>";
-    echo"<p class="."title"."> ".$result2['Email']."</p>"."<br>"."<br>"."<br>";
-    echo"<p class="."title"."> ". $result2['Password']."</p>"."<br>"."<br>"."<br>";
-    echo"<p class="."title2"."> ". $result2['National_ID']."</p>"."<br>"."<br>"."<br>";
-    echo"<p class="."title2"."> ". $result2['Phone_Num']."</p>"."<br>"."<br>"."<br>";
-    echo"<p> <button>Edit</button> </p>";
- }
+    echo"<p class="."title"."> ".$_SESSION['email']."</p>"."<br>"."<br>"."<br>";
+    echo"<p class="."title"."> ". $_SESSION['password']."</p>"."<br>"."<br>"."<br>";
+    echo"<p class="."title2"."> ". $_SESSION['Phone_Num']."</p>"."<br>"."<br>"."<br>";
+    echo" <button onclick=profiledit()>Edit</button>";
+//  }
 
 ?>
 </div>
 </body>
 </html>
+
+
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
