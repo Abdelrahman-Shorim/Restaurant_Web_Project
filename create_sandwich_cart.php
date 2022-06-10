@@ -18,7 +18,10 @@ for($i=0;$i<count($sandwich_items);$i++) {
         $_SESSION['sandwichcounter']=0;
     }
     $Counter=$_SESSION['sandwichcounter'];
-    $_SESSION['sandwichcart'][$Counter]=$test;
+    $_SESSION['sandwichcart'][$Counter]=array(
+        'sandwichitems'=>$test,
+        'Quantity'=>1
+    );
     $_SESSION['sandwichcounter']=$_SESSION['sandwichcounter']+1;
 
     // echo "<script>alert('".."')</script>";

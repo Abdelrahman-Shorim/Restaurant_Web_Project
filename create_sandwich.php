@@ -182,7 +182,7 @@ session_start();
         <div class ="items"> <!-- div bta3et el items --> </div><br>
 
         <div class="buttons"> <!-- div bta3et el next wel back -->
-        <button  onclick="addtocartsandwich()">Add to cart</button>
+        <button class = "btn"  onclick="addtocartsandwich()">Add to cart</button>
                 <!-- // <input type="button" value="Add to cart" onclick="addtocartsandwich()"> -->
             </div> <!-- END   div bta3et el next wel back -->
     </div><!-- END el div ely feha kol 7aga -->
@@ -198,7 +198,7 @@ session_start();
             var sitems= [];
 
 
-            alert('hi');
+            alert('Sandwich added');
             // if(document.querySelector('input[name="Bread"]:checked').value==true)
                 sitems.push(document.querySelector('input[name="Bread"]:checked').value);
 
@@ -254,7 +254,7 @@ session_start();
             // //     alert(sitems[t]);
             //     document.getElementById("sitems").append(sitems[t]+"<br>  ");
             // }
-
+            getitems(0);
             
         }
 
