@@ -1,8 +1,8 @@
-
+<?php include 'database.php';?>
 <?php
 
 // Create connection
-$conn = new mysqli("localhost", "root", "", "restaurant_web_project");//Connecting to the sql database and creating an object called 'conn'
+$conn = mysqli_connect($server, $user, $pass, $db );//Connecting to the sql database and creating an object called 'conn'
 $sql = "SELECT * FROM items WHERE Name LIKE '%".$_POST['name']."%'";// The sql query that fetches for name and ingredients that are sent from the other page
 $result = mysqli_query($conn, $sql);//making the query into the sql database
 echo'<section class="menu wrapper" id="menu">';

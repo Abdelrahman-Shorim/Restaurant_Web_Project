@@ -1,9 +1,7 @@
+<?php include 'database.php';?>
 <?php
 
-$hn='localhost';
-$db='project';
-$un='root';
-$pw='';
+
 /*
 $imagename=$_FILES['image']['name'];
 $imagetype=$_FILES['image']['type'];
@@ -47,7 +45,7 @@ if(is_uploaded_file($imagetemp)){
     echo "failed to upload your image";
     }
 require_once 'datain.php';
-$conn=new mysqli($hn,$un,$pw,$db);
+$conn = mysqli_connect($server, $user, $pass, $db );
 if($conn->connect_error) die("fatal error");
 
 $query="INSERT INTO food (name,price,type,image) 

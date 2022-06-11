@@ -1,8 +1,8 @@
 <?php 
 session_start();
     // echo "<script>alert('quantity: ".$_POST['quantity']."')</script>";
-  
 ?>
+<?php include 'database.php';?>
 <script>
     let chosentype=-1;
 </script>
@@ -15,65 +15,159 @@ session_start();
 </head>
 
 <style>
+    .icon-wrapper{
+        width: 50%;
+        height: 50%;
+        position: relative;
+    
+    }
+    .icon-wrapper::after{
+        content: attr(data-number);
+        width:20px;
+        height: 20px;
+        background-color: #d32b2b;
+        color:#fff;
+        display: grid;
+        place-content: center;
+        border-radius: 50%;
+        position: absolute;
+        top:5px;
+        right:0;
+        opacity:0;
+        transform:(translateY(3px));
+        font-size: small;
+    }
+    .icon-wrapper::after{
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity.25s;
+        transform: .25s;
+    }
+    .cart-icon{
+        max-width: 100%;
+    }
+    .icon-wrapper:hover .cart-icon{
+        animation:shake 1s forwards;
+    }
+    @keyframes shake{
+        10%{transform: rotate (15deg);}
+        20%{transform: rotate(-15deg);}
+        30%{transform:rotate(15deg);}
+        50%{transform: rotate(0deg);}
+    }
 
-.h11 {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 140px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  color: while;
-  background:#00203FFF;
-  /* background-color: transparent */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 90px;
-  
-}
+    /* .profile{
+    --bg-clr:#131313;
+    background-color:var(--bg-clr);} */
+    .img-wrapper{
+    max-width:150px;
+    position:relative;
 
-/* The navigation menu links */
-.h11 label {
-  padding: 35px 5px 0px 10px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  display: block;
-  /* padding-top: px; */
-}
+    } 
+    .img-wrapper img{
+    width: 100%;
+    display:block;
+    border-radius:50%;} 
+    .img-wrapper::before{
+    content:"";
+    position:absolute;
+    inset: -15px;
+    /* border: 6px solid greenyellow; */
+    border-top-color:#fff;
+    border-bottom-color:#ababab;
+    border-radius:50%;
+    z-index: -1;
+    /* animation:spin 3s linear infinite;} */
+    }
 
-/* When you mouse over the navigation links, change their color */
-.h11 label:hover {
-  color: #f4b41a;
-}
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .h11 {padding-top: 15px;}
-  .h11 label {font-size: 18px;}
-}
+    .search-box{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        background:white;
+        padding:10px;
 
-.float-container {
-   /* border: 3px solid #fff;*/
-    padding: 20px;
-    width: 50%;
-    height: 40;
+    }
+    .search-box:hover>input{width:200px;
+    padding:0 10px;
+    }
+    .search-box:hover>.icon{background: #536179;}
+    .search-box.icon:hover{transform:rotate(360deg)
+    scale(0.8);}
+    .search-box input{width:0; border:none; outline:none; padding:0; background:none; font-size:1.1rem; transition:0.5s ease; line-height:40px; color:black;}
+    .icon{color:#21DFCD;
+    float:right;
+    width:40px;
+    font-size:1.3rem;
+    height:40px;
+    border-radius:50%;
+    background:#2f3640;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    transition:0.4s;
+    cursor:pointer;
+    text-decoration: none;}
+    .h11 {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 140px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    color: while;
+    background:#00203FFF;
+    /* background-color: transparent */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 90px;
+    
+    }
+
+    /* The navigation menu links */
+    .h11 label {
+    padding: 35px 5px 0px 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    /* padding-top: px; */
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .h11 label:hover {
+    color: #f4b41a;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+    .h11 {padding-top: 15px;}
+    .h11 label {font-size: 18px;}
+    }
+
+    .float-container {
+    /* border: 3px solid #fff;*/
+        padding: 20px;
+        width: 50%;
+        height: 40;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap:1.5rem;
+        background-color: green;
+    
+    }
+    
+    .float-child {
+        height: 100px;
+    width: 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap:1.5rem;
-    background-color: green;
-   
-  }
-  
-  .float-child {
-    height: 100px;
-  width: 100px;
-  display: grid;
-  background-color: transparent;
-  float:left; /* add this */
-  margin: 100px 5px 50px 170px;
-      
-  } 
-  
+    background-color: transparent;
+    float:left; /* add this */
+    margin: 100px 5px 50px 170px;
+        
+    } 
+    
 
 </style>
 <header>
@@ -158,7 +252,7 @@ session_start();
 
 <?php
     // to get item types 
-    $conn = new mysqli("localhost", "root", "", "restaurant_web_project");
+    $conn = mysqli_connect($server, $user, $pass, $db );
     if($conn->connect_error) die("fatal Error");
 
     $query="SELECT * FROM item_types";
@@ -197,103 +291,6 @@ session_start();
 </div> -->
 
 </html>
-<style>
-.icon-wrapper{
-    width: 50%;
-    height: 50%;
-    position: relative;
-  
-}
-.icon-wrapper::after{
-    content: attr(data-number);
-    width:20px;
-    height: 20px;
-    background-color: #d32b2b;
-    color:#fff;
-    display: grid;
-    place-content: center;
-    border-radius: 50%;
-    position: absolute;
-    top:5px;
-    right:0;
-    opacity:0;
-    transform:(translateY(3px));
-    font-size: small;
-}
-.icon-wrapper::after{
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity.25s;
-    transform: .25s;
-}
-.cart-icon{
-    max-width: 100%;
-}
-.icon-wrapper:hover .cart-icon{
-    animation:shake 1s forwards;
-}
-@keyframes shake{
-    10%{transform: rotate (15deg);}
-    20%{transform: rotate(-15deg);}
-    30%{transform:rotate(15deg);}
-    50%{transform: rotate(0deg);}
-}
-
-/* .profile{
---bg-clr:#131313;
-background-color:var(--bg-clr);} */
-.img-wrapper{
-max-width:150px;
-position:relative;
-
-} 
- .img-wrapper img{
-width: 100%;
-display:block;
-border-radius:50%;} 
- .img-wrapper::before{
-content:"";
-position:absolute;
-inset: -15px;
-/* border: 6px solid greenyellow; */
-border-top-color:#fff;
-border-bottom-color:#ababab;
-border-radius:50%;
-z-index: -1;
-/* animation:spin 3s linear infinite;} */
- }
-
-
-.search-box{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background:white;
-    padding:10px;
-
-}
-.search-box:hover>input{width:200px;
-padding:0 10px;
-}
-.search-box:hover>.icon{background: #536179;}
-.search-box.icon:hover{transform:rotate(360deg)
-scale(0.8);}
-.search-box input{width:0; border:none; outline:none; padding:0; background:none; font-size:1.1rem; transition:0.5s ease; line-height:40px; color:black;}
-.icon{color:#21DFCD;
-float:right;
-width:40px;
-font-size:1.3rem;
-height:40px;
-border-radius:50%;
-background:#2f3640;
-display:flex;
-justify-content: center;
-align-items:center;
-transition:0.4s;
-cursor:pointer;
-text-decoration: none;}
-</style>
 <script> 
   $(document).ready(function(){
     //Starting the fuction so it can start the search 

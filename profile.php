@@ -1,6 +1,7 @@
 <?php
 session_start();
     ?>
+    <?php include 'database.php';?>
 <html>
 <head>
     <link rel="stylesheet" href="menuStyle.css" />
@@ -28,10 +29,6 @@ session_start();
 <body>
     <div style="padding-top: 100px;">
 <?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "restaurant_web_project";
 
 $conn = mysqli_connect($server, $user, $pass, $db );
 if(!$conn){

@@ -1,3 +1,4 @@
+<?php include 'database.php';?>
 <?php
 
     // $hn='localhost';
@@ -19,7 +20,7 @@
     //$imagepath="Restaurant_Web_Project/Menu_images/".$type."/";
     //$img=$imagepath.$imagename;
 
-    $conn = new mysqli("localhost","root","","restaurant_web_project");
+    $conn = mysqli_connect($server, $user, $pass, $db );
 
     if ($conn->connect_error) die ("Fatal connection error");
     $query = "select ID,I_Type,description,image from item_types"; //preparation

@@ -1,10 +1,10 @@
 <?php
 session_start();
-?><?php
-$server = "localhost";
-$user = "root";
-$pass = "";
-$db = "restaurant_web_project";
+?>
+<?php include 'database.php';?>
+
+<?php
+
 
 
 $conn = mysqli_connect($server, $user, $pass, $db );

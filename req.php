@@ -1,13 +1,9 @@
+<?php include 'database.php';?>
 
 <html>
     <?php
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "restaurant_web_project";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = mysqli_connect($server, $user, $pass, $db );
     if($conn->connect_error) die("fatal Error");
 
     $query2= "SELECT * FROM items  WHERE items.I_ID=".$_GET['id'];

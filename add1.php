@@ -1,7 +1,11 @@
+<?php include 'database.php';?>
+<?php 
+include "qualitycontrol_navbar.php";?>
+
 <html>
     <body>
         <?php
-        $conn = new mysqli("localhost","root","","restaurant_web_project");
+       $conn = mysqli_connect($server, $user, $pass, $db );
 
         if ($conn->connect_error) die ("Fatal connection error");
         $query = "select ID,I_Type,description,image from item_types"; //preparation

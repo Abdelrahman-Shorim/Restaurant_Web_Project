@@ -1,3 +1,4 @@
+<?php include 'database.php';?>
 <?php
 
     // $hn='localhost';
@@ -52,7 +53,7 @@
     echo "img: ".$img."<br>";
     echo "type: ".$type."    ".$num."<br>";
         
-    $conn =mysqli_connect("localhost","root","","restaurant_web_project");
+    $conn = mysqli_connect($server, $user, $pass, $db );
     if($conn)
     {
         echo "succ";

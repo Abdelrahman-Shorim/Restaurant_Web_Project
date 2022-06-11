@@ -1,3 +1,5 @@
+<?php include 'database.php';?>
+
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -8,12 +10,8 @@
 <?php include "qualitycontrol_navbar.php";
 $id=$_POST['id'];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "restaurant_web_project";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($server, $user, $pass, $db );
 $query = "SELECT users.U_ID,users.FN,users.LN,items.Name,items.Description, rate.rate FROM items,rate ,users WHERE rate.I_ID=items.I_ID AND items.I_ID=$id AND users.U_ID=rate.U_ID";
 $result = mysqli_query($conn,$query);
 

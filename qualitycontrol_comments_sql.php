@@ -1,3 +1,5 @@
+<?php include 'database.php';?>
+
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -10,12 +12,8 @@
 $id=$_POST['id'];
 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "restaurant_web_project";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($server, $user, $pass, $db );
 $query ="SELECT users.U_ID,users.FN,users.LN,items.Name,comments.comment FROM comments,users,items WHERE comments.U_ID=users.U_ID AND comments.I_ID=items.I_ID And items.I_ID=$id";
 $result = mysqli_query($conn,$query);
 

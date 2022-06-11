@@ -1,12 +1,17 @@
 <?php
 session_start();
+?>
+<?php include 'database.php';?>
+
+<?php
 // echo "<script>alert('".$_POST['item_id']."')</script>";
 
 // echo "<script>alert('".$_SESSION['ID']."')</script>";
 // echo "<script>alert('".$_POST['comment']."')</script>";
 
 
-    $conn = new mysqli("localhost", "root", "", "restaurant_web_project");
+$conn = mysqli_connect($server, $user, $pass, $db );
+
     if($conn->connect_error) die("fatal Error");
 
     $query="INSERT INTO `comments` (`C_ID`, `U_ID`, `I_ID`, `comment`) 

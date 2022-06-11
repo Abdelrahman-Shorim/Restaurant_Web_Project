@@ -1,17 +1,13 @@
 <?php 
 session_start();
 ?>
+<?php include 'database.php';?>
 <?php
 
 if(isset(($_POST['submit'])))
 {
     $date=  date("r");
 // echo $date;
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "restaurant_web_project";
-
     $conn = new mysqli($servername, $username, $password, $dbname);
     if($conn->connect_error) die("fatal Error");
 

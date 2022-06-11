@@ -1,8 +1,10 @@
+<?php include 'database.php';?>
+<?php include "qualitycontrol_navbar.php"; ?>
 <html>
 
 <body>
 
-<table border=1>
+<table class="table table-hover">
 
 <tr>
 

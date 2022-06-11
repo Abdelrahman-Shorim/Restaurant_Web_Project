@@ -1,10 +1,12 @@
+<?php include 'database.php';?>
+
 <html>
 
 <body>
 
 <?php
 
-$conn = new mysqli("localhost","root","","restaurant_web_project");
+$conn = mysqli_connect($server, $user, $pass, $db );
 
 if ($conn->connect_error) die ("Fatal connection error");
 

@@ -1,6 +1,11 @@
 <?php
 session_start();
-    $conn= mysqli_connect("localhost","root","","restaurant_web_project");
+?>
+<?php 
+include 'database.php';
+?>
+<?php
+$conn = mysqli_connect($server, $user, $pass, $db );
     if($conn->connect_error) die("fatal error");
 
     $query ="SELECT * FROM `sandwich_types`";

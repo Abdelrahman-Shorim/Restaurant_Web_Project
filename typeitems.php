@@ -1,6 +1,8 @@
+<?php include 'database.php';?>
+
 <?php
-    $conn = new mysqli("localhost", "root", "", "restaurant_web_project");
-    $query2= "SELECT * FROM items , item_types WHERE item_types.ID=items.I_Type AND items.I_Type=".$_POST['id'];
+$conn = mysqli_connect($server, $user, $pass, $db );
+$query2= "SELECT * FROM items , item_types WHERE item_types.ID=items.I_Type AND items.I_Type=".$_POST['id'];
     // $query2= "SELECT * FROM items , item_types WHERE item_types.ID=items.I_Type AND items.I_Type=1";
     $result=$conn->query($query2);
     if(!$result) die("fatal Error");
