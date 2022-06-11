@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -9,4 +8,5 @@ echo "<p class=title><input type='text' id=Email value='".$_SESSION['email']."'>
 echo "<p class=title><input type='text' id=Password value='".$_SESSION['password']."'> </p>" ;
 echo "<p class=title2><input type='text' id=Phone_number value='".$_SESSION['Phone_Num']."'> </p>" ;
 echo"<p> <button onclick=psave()>Save</button> </p>";
+
 ?>
