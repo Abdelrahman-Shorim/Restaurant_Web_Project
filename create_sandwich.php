@@ -244,6 +244,7 @@ session_start();
                     success:function(data)
                     {
                         $("#sitems").html(data);
+                        location.reload();
                     }
                 }
             );

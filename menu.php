@@ -96,7 +96,15 @@ session_start();
         </a>    
     </div>
         <!-- <a href="cart_page.php" class="fas fa-shopping-cart"> </a> -->
-        <a href="cart_page.php" class="icon-wrapper fas fa-shopping-cart cart-icon" data-number="<?php if(isset($_SESSION['counter'])){echo $_SESSION['counter'];} else echo "0"; ?>"> </a>
+
+        <?php $cartnumber=0;
+        if(isset($_SESSION['counter'])&&isset($_SESSION['sandwichcounter'])){$cartnumber=$cartnumber+$_SESSION['counter']+$_SESSION['sandwichcounter'];}
+        elseif (isset($_SESSION['counter'])){$cartnumber+=$_SESSION['counter'];}
+        elseif(isset($_SESSION['sandwichcounter'])){$cartnumber+=$_SESSION['sandwichcounter'];}
+        
+        ?>
+        <a href="history.php"><i class="fa fa-history"></i></a>
+        <a href="cart_page.php" class="icon-wrapper fas fa-shopping-cart cart-icon" data-number="<?php echo $cartnumber;?>"> </a>
         <a href="profile.php"style='font-size:24px' class='fas'>&#xf406; </a>
         <!-- <i value="" class="img-wrapper fas " id=""  ><img src=
         <?php //echo $_SESSION['Image'];?>
