@@ -25,12 +25,7 @@ if (mysqli_num_rows($result) === 1) {
        $_SESSION['password']=$_POST['password'];
        $_SESSION['Phone_Num']=$row['Phone_Num'];
        $_SESSION['Image']=$row['img'];
-       if($row['U_Type']==1)
-       {
         header("Location: home_page.php");
-       }
-       elseif($row['U_Type']==2){header("location:Cashier_view/menu.php");}
-       elseif($row['U_Type']==3){header("location:Quality_control_view/qualitycontrol_Home.php");}
         exit();
     }
     else{
