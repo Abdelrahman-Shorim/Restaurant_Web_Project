@@ -1,8 +1,4 @@
 <html>
-
-<head>
-
-</head>
 <body>
 <?php 
 include "qualitycontrol_navbar.php";?>

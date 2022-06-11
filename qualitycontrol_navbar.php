@@ -28,8 +28,9 @@
 			<?php
 				
 					echo"<a href='qualitycontrol_Home.php'>Home</a>";
-					echo"<a href='quality_control.php'>Comments</a>";
+					echo"<a href='quality_control_comments.php'>Comments</a>";
 					echo"<a href='qualitycontrol_rating.php'>Rating</a>";
+					echo"<a href='qualitycontrol_promotion.php'>Promotion</a>";
                     
 				
 				?>
