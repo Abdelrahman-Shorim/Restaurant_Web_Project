@@ -1,281 +1,348 @@
 <html>
-    <?php
-    session_start();
-    ?>
-<style>
-.container{
-    position:relative;
-    width: 500px;
-    height: 500px;
-    display: inline-block;
-}
-.image{
-    display:block;
-    width: 500px;
-    height: 500px;
-}
-.overlay{
-    position: absolute;
-    transition: all .4s ease;
-    opacity:0;
-    background-color: #eee;
-}
-.text{
-    color: black;
-    font-family: sans-serif;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 20px;
-}
+    <head>
+    <link rel="stylesheet" href="menuStyle.css" >
+    <link rel="stylesheet" href="style2.css" >
 
-.text2{
-    color: black;
-    font-family: sans-serif;
-    position: absolute;
-    top: 70%;
-    left: 5%;
-    font-size: 20px;
-}
-.container:hover .overlay{
-    opacity:1;
-    background: rgba(192,192,192,0.6);
-}
-.overlayLeft{
-    height: 100%;
-    width: 0;
-    top: 0;
-    left: 0;
-}
-.container:hover .overlayLeft{
-    width: 100%;
-}
 
-/*slider css*/
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<header>
+    
+    <a href="#" class="logo"><i class="fas fa-utensils"></i>Grand Restaurant</a>
 
-div.myclass{
-    height: 400px;
-  width: 100px;
+    <nav class="navbar">
+        <!-- <a class="active" href="#home">home</a> -->
+       
+        <!-- <a href="#menu">menu</a> -->
+       
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <div class="search-box">
+          
+        <a href="#" class="icon">
+        
+        </a>    
+    </div>
+        <!-- <a href="cart_page.php" class="fas fa-shopping-cart"> </a> -->
+        <a href="cart_page.php" class="icon-wrapper fas fa-shopping-cart cart-icon" data-number="<?php if(isset($_SESSION['counter'])){echo $_SESSION['counter'];} else echo "0"; ?>"> </a>
+        <a href="profile.php"style='font-size:24px' class='fas'>&#xf406; </a>
+        <!-- <i value="" class="img-wrapper fas " id=""  ><img src=
+        <?php //echo $_SESSION['Image'];?>
+        ></i> -->
+    </div>
+
+</header>
+    <a href="clear.php" style="padding: 200px;">click</a>
+    
+
+
+    <style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 
-div.m{
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: max;
-                /*background: #23E3C9;*/ 
-            }
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
 
-            .slider{
-                width: 800px;
-                height: 500px;
-                border-radius: 10px;
-                overflow: hidden;
-            }
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
-            .slides{
-                width: 500%;
-                height: 500px;
-                display: flex;
-            }
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
 
-            /*radio buttons aren't shown at the top*/
-            .slides input{
-                display: none;
-            }
+.active {
+  background-color: #717171;
+}
 
-            .slide{
-                width: 20%;
-                transition: 2s;
-            }
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.float-container {
 
-            .slide img{
-                width: 800px;
-                height: 500px;
-            }
+    padding-top: 50px;
+}
 
-            /*css for manual slide navigation*/
+.float-child {
+    width: 50%;
+    float: left;
+    /* margin:left; */
+ 
+}  
+.float-child1 {
+    width: 50%;
+    float: left;
+    margin:right;
+ 
+}  
+.float-child2 {
+    width: 33%;
+    float: left;
+    margin:right;
+    height:20%;
+ 
+}  
+.content span{
+    color:rgb(124, 207, 170);
+    font-size: 2.5rem;
+}
 
-            .navigation-manual{
-                position: absolute;
-                width: 800px;
-                margin-top: 460px;
-                display: flex;
-                justify-content: center;
-            }
+ .content h3{
+    color:var(--black);
+    font-size: 7rem;
+}
 
-            .manual-btn{
-                border: 2px solid #40D3DC;
-                padding: 5px;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: 1s;
-            }
+ .content p{
+    color:var(--light-color);
+    font-size: 2.2rem;
+    padding:.5rem 0;
+    line-height: 1.5;
+}
+.btnn{
+    margin-top: 1rem;
+    display: center;
+    font-size: 1.7rem;
+    color:#fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+}
 
-            /*spaces between buttons*/
-            .manual-btn:not(:last-child){
-                margin-right: 40px;
-            }
+.btnn:hover{
+    background:rgb(124, 207, 170);;
+    letter-spacing: .1rem;
+}
 
-            /*hover over button*/
-            .manual-btn:hover{
-                background: #40D3DC;
-            }
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
 
-            /*manual image choosing*/
-            #radio1:checked ~ .first{
-                margin-left: 0;
-            }
-
-            #radio2:checked ~ .first{
-                margin-left: -20%;
-            }
-
-            #radio3:checked ~ .first{
-                margin-left: -40%;
-            }
-
-            #radio4:checked ~ .first{
-                margin-left: -60%;
-            }
-
-            /*css for automatic navigation*/
-
-            .navigation-auto{
-                position: absolute;
-                display: flex;
-                width: 800px;
-                justify-content: center;
-                margin-top: 460px;
-            }
-
-            .navigation-auto div{
-                border: 2px solid #40D3DC;
-                padding: 5px;
-                border-radius: 10px;
-                transition: 1s;
-            }
-
-            /*spaces between buttons*/
-            .navigation-auto div:not(:last-child){
-                margin-right: 40px;
-            }
-
-            #radio1:checked ~ .navigation-auto .auto-btn1{
-                background: #40D3DC;
-            }
-
-            #radio2:checked ~ .navigation-auto .auto-btn2{
-                background: #40D3DC;
-            }
-
-            #radio3:checked ~ .navigation-auto .auto-btn3{
-                background: #40D3DC;
-            }
-
-            #radio4:checked ~ .navigation-auto .auto-btn4{
-                background: #40D3DC;
-            }
-
-    </style>
-
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+</head>
 <body>
-<div class="m">
-<!--slider body start-->
-<div class="slider">
-            <div class="slides">
-                <input type="radio" name="radio-btn" id="radio1">
-                <input type="radio" name="radio-btn" id="radio2">
-                <input type="radio" name="radio-btn" id="radio3">
-                <input type="radio" name="radio-btn" id="radio4">
 
-                <div class="slide first">
-                    <img src="Menu_images\Appetizers\Aubergine Gratin.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="Menu_images\Appetizers\Chicken Dynamite.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="Menu_images\Appetizers\Chicken Strips.jpg" alt="">
-                </div>
-                <div class="slide">
-                    <img src="Menu_images\Appetizers\Combo Platter.jpg" alt="">
-                </div>
 
-                <!--automatic navigation-->
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-                    <div class="auto-btn4"></div>
-                </div>
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
-            </div>
+
+<div class="float-child">
+<div class="content" style="text-align:center">
+                   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     
+                    <span>Hello Habiba</span>
+                    <br>
+                   <br>
+                    <h3>our popular Dishes</h3>
+                   <br><br><br><br>
+        
             
-            <!--manual navigation-->
+                    <a href="menu.php" class="btnn">Jump To Menu</a>
+                </div>
+                </div>
+
+                <div class="float-container"> 
+<div class="float-child1">
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 7</div>
+  <img src="imagescopy/slider1.png" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 7</div>
+  <img src="imagescopy/slider2.png" style="width:100%">
+  
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 7</div>
+  <img src="imagescopy/slider3.png" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 7</div>
+  <img src="imagescopy/slider4.png" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 7</div>
+  <img src="imagescopy/slider5.png" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 7</div>
+  <img src="imagescopy/slider5.png" style="width:100%">
+ 
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">6 / 7</div>
+  <img src="imagescopy/slider6.png" style="width:100%">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">7 / 7</div>
+  <img src="imagescopy/slider7.png" style="width:100%">
+
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+</div>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+</script>
+
+
+<section class="review" id="review">
+
+    <h3 class="sub-heading" style="color:rgb(124, 207, 170);"> customer's review </h3>
+    <h1 class="heading"> what they say </h1>
+
+    <div class="swiper-container review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide float-child2">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="imagescopy/habiba2.png" alt="">
+                    <div class="user-info">
+                        <h3>Habiba Mohamed</h3>
+                        <div class="stars">
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Best Restaurant in town, I'd definitely order your amazing pasta again.</p>
+            </div>
+
+            <div class="swiper-slide slide float-child2">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="imagescopy/mina.png" alt="">
+                    <div class="user-info">
+                        <h3>Mina Antoun</h3>
+                        <div class="stars">
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>I've never eaten such a delicious burger in my entire life, and thank you for the service too.</p>
+            </div>
+
+            <div class="swiper-slide slide float-child2">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="imagescopy/nour.png" alt="">
+                    <div class="user-info">
+                        <h3>Nour Nader</h3>
+                        <div class="stars">
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star" style="color:rgb(124, 207, 170);"></i>
+                            <i class="fas fa-star-half-alt" style="color:rgb(124, 207, 170);"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>I created my own sandwich and i didn't expect that all the veggies would be this fresh.</p>
+            </div>
+
+
         </div>
         
 
-        <script type="text/javascript">
-            var counter=1;
-            setInterval(function(){
-                document.getElementById('radio' + counter).checked=true;
-                counter++;
-                if(counter>4){
-                    counter=1;
-                }
-            }, 5000);
-        </script>
+    </div>
 
-<!--slider body end-->
-        </div>
+    
+</section>
 
-<?php
- $servername = "localhost";
- $username = "root";
- $password = "";
- $dbname = "restaurant_web_project";
 
- $conn = new mysqli($servername, $username, $password, $dbname);
- if($conn->connect_error) die("fatal Error");
 
- $query="SELECT * FROM item_types";
- $result=$conn->query($query);
- if(!$result) die("fatal Error");
 
-  echo '<div >';
- while($result2=mysqli_fetch_array($result))
- {
-    echo "<div class='container' id='".$result2['ID']."' onclick='gotomenu(this.id)'>";
-    echo '<img src="'.$result2['image'].'" alt="img" class="image">';
-    echo '<div class="overlay overlayLeft">';
-    echo '<div class="text">'.$result2['I_Type'].'</div>';
-    echo '<div class="text2">'.$result2['description'].'</div>';
-    echo '<form id="menu'.$result2['ID'].'" action="menu.php" method="post" onsubmit="return addtocart()">';
-   echo '<input type="hidden" name="itemtypeid" value="'.$result2["ID"].'">';
-   echo '</form>';
-    echo '</div>';
-    echo '</div>';
 
-    //  echo'<label id ="'. $result2["ID"].'" onclick="reload(this)">' .  $result2["I_Type"] . '</label>'.'<br>';
-}
-  echo '</div>';
- mysqli_close($conn);
-
-?>
-
-<script>
-        function gotomenu(s){
-            document.getElementById('menu'+s).submit();
-        }
-    </script>
-</body>
 </html>
