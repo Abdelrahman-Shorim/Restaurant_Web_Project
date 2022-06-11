@@ -11,7 +11,7 @@ if(isset(($_POST['submit'])))
     $username = "root";
     $password = "";
     $dbname = "restaurant_web_project";
-   
+
     $conn = new mysqli($servername, $username, $password, $dbname);
     if($conn->connect_error) die("fatal Error");
 
@@ -23,18 +23,51 @@ if(isset(($_POST['submit'])))
 
     echo"<script> alert('added')</script>";
 
-    for($i=0;$i<$_SESSION['counter'];$i++)
+    if((isset($_SESSION['counter'])&&$_SESSION['counter']!=0)) 
     {
-        $foodid=$_SESSION['cart'][$i]['ID'];
-        $quantity=$_SESSION['cart'][$i]['Quantity'];
-        $sql = "INSERT INTO `order_items`(`OI_ID`, `O_ID`, `I_ID`, `quantity`) VALUES (null,(SELECT `O_ID` FROM `order` ORDER BY `O_ID` DESC LIMIT 1 ),$foodid,$quantity)";
-        $res=$conn->query($sql);
 
-        if(!$res) die("fatal Errors");
+        for($i=0;$i<$_SESSION['counter'];$i++)
+        {
+            $foodid=$_SESSION['cart'][$i]['ID'];
+            $quantity=$_SESSION['cart'][$i]['Quantity'];
+            $sql = "INSERT INTO `order_items`(`OI_ID`, `O_ID`, `I_ID`, `quantity`) VALUES (null,(SELECT `O_ID` FROM `order` ORDER BY `O_ID` DESC LIMIT 1 ),$foodid,$quantity)";
+            $res=$conn->query($sql);
+
+            if(!$res) die("fatal Errors");
+        }
+        unset($_SESSION['cart']);
+        unset($_SESSION['counter']);
     }
 
-    unset($_SESSION['cart']);
-    unset($_SESSION['counter']);
+
+
+    if(isset($_SESSION['sandwichcart'])&&$_SESSION['sandwichcounter']!=0) 
+    {
+        
+        for($z=0;$z<$_SESSION['sandwichcounter'];$z++)
+        {
+            $text1=explode("_",$_SESSION['sandwichcart'][$z]['sandwichitems']);
+            
+            $q1="INSERT INTO `sandwich_order` (`SO_ID`, `O_ID`, `Quantity`) VALUES (NULL, (SELECT `O_ID` FROM `order` ORDER BY `O_ID` DESC LIMIT 1 ), '".$_SESSION['sandwichcart'][$z]['Quantity']."');";
+            
+            $result=$conn->query($q1);
+            if(!$result) die("fatal Errors");
+
+            for($s=0;$s<count($text1)-1;$s++)
+            {
+                $text2=explode(",",$text1[$s]);
+                $q2="INSERT INTO `sandwich_order_details` (`SOD_ID`, `SO_ID`, `S_item`) VALUES (NULL, (SELECT `SO_ID` FROM `sandwich_order` ORDER BY `SO_ID` DESC LIMIT 1 ), '".$text2[0]."');";
+               
+                $result=$conn->query($q2);
+                if(!$result) die("fatal Errors");
+    
+            }
+        }
+
+        unset($_SESSION['sandwichcart']);
+        unset($_SESSION['sandwichcounter']);
+    }
+    $conn->close();
     header("location:menu.php");
 }
 
@@ -70,36 +103,37 @@ if((isset($_SESSION['counter'])&&$_SESSION['counter']!=0)||(isset($_SESSION['san
     $_SESSION['sum']=0;
 
 
-if((isset($_SESSION['counter'])&&$_SESSION['counter']!=0)) {
+if((isset($_SESSION['counter'])&&$_SESSION['counter']!=0)) 
+{
 
-echo "<table class='table table-hover'>
-    <thead>
-    <tr>
-    <th>Name</th>
- <th>Price</th>
- <th>Quantity</th>
- <th>Total Price</th>
- <th></th>
- <th></th>
-    </tr>
-    </thead>
- ";
-    echo"<tbody id='cart'>";
-    // $i;
-    for($i=0;$i<$_SESSION['counter'];$i++)
+    echo "<table class='table table-hover'>
+        <thead>
+        <tr>
+        <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+    <th></th>
+    <th></th>
+        </tr>
+        </thead>
+    ";
+        echo"<tbody id='cart'>";
+        // $i;
+        for($i=0;$i<$_SESSION['counter'];$i++)
 
-    {       
-        $_SESSION['sum']+=($_SESSION['cart'][$i]['Price']*$_SESSION['cart'][$i]['Quantity']);
-         $q=$_SESSION['cart'][$i]['Price'];
-        echo "<tr>
-        <td>". $_SESSION['cart'][$i]['Name']. "</td> 
-        <td>". $_SESSION['cart'][$i]['Price'].' L.E'."</td>
-        <td>".$_SESSION['cart'][$i]['Quantity']."</td>
-        <td>". $q*$_SESSION['cart'][$i]['Quantity'].' L.E'."</td>
-        <td><button id='$i'onclick=edit(this.id) class='button btn btn-primary'>Edit</button></td>
-        <td><button id='$i' onclick='remove(this.id)'class='btn btn-danger'>Remove</button></td>
-        </tr>";// printing out the searched values that we found matching in the database in a table
-      
+        {       
+            $_SESSION['sum']+=($_SESSION['cart'][$i]['Price']*$_SESSION['cart'][$i]['Quantity']);
+            $q=$_SESSION['cart'][$i]['Price'];
+            echo "<tr>
+            <td>". $_SESSION['cart'][$i]['Name']. "</td> 
+            <td>". $_SESSION['cart'][$i]['Price'].' L.E'."</td>
+            <td>".$_SESSION['cart'][$i]['Quantity']."</td>
+            <td>". $q*$_SESSION['cart'][$i]['Quantity'].' L.E'."</td>
+            <td><button id='$i'onclick=edit(this.id) class='button btn btn-primary'>Edit</button></td>
+            <td><button id='$i' onclick='remove(this.id)'class='btn btn-danger'>Remove</button></td>
+            </tr>";// printing out the searched values that we found matching in the database in a table
+        
     }
     echo "</tbody>";
 echo "</table>";
