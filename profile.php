@@ -3,20 +3,7 @@ session_start();
     ?>
 <html>
 <head>
-  <script>
-function profiledit(){
-
-  $.ajax({
-url:"editprofile.php" ,
-data: email:"",
-type: "POST" , 
-success: function(data){
-$("#profile").html(data);
-}
-});
-
-}
-  </script>
+ 
 
 
 
@@ -29,7 +16,7 @@ $("#profile").html(data);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">//Including bootstrapccdn library</script> 
 <header>
     
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>Grand Restaurant</a>
+    <a href="menu.php" class="logo"><i class="fas fa-utensils"></i>Grand Restaurant</a>
 
     <nav class="navbar">
       
@@ -63,20 +50,53 @@ $("#profile").html(data);
 //  while($result2=mysqli_fetch_array($result)){
     echo' <div id="profile"  class="card">';
     echo "<img src=".$_SESSION['Image']." style = "."width:100%".">"."<br>"."<br>";
-    echo "<h1>".$_SESSION['Firstname']." ".$_SESSION['lastname']."</h1>"."<br>"."<br>"."<br>";
-    // echo "<h1>".$result2['LN']."</h1>";
+    echo "<h1>".$_SESSION['Firstname']."</h1>"."<br>"."<br>"."<br>";
+    echo "<h1>".$_SESSION['lastname']."</h1><br>";
     echo"<p class="."title"."> ".$_SESSION['email']."</p>"."<br>"."<br>"."<br>";
     echo"<p class="."title"."> ". $_SESSION['password']."</p>"."<br>"."<br>"."<br>";
     echo"<p class="."title2"."> ". $_SESSION['Phone_Num']."</p>"."<br>"."<br>"."<br>";
-    echo" <button onclick=profiledit()>Edit</button>";
+    echo "<button onclick="."profiledit()".">Edit</button>";   
+    echo "<button onclick="."logout()".">Logout</button>";  
 //  }
 
 ?>
+
 </div>
 </body>
 </html>
 
+<script>
+  function psave(){
+    jQuery.ajax({
+url:"p.php",
+data:{FN:$('#Fname').val(),LN:$('#Lname').val(),Email:$('#Email').val(),Password:$('#Password').val(),Phone_number:$('#Phone_number').val()},
+type:"POST",
+success:function(){location.reload();}
 
+
+    });
+  
+  }
+function profiledit(){
+alert("hello");
+  jQuery.ajax({
+url:"editprofile.php" ,
+data:{ email: "<?php echo $_SESSION['email']?>"},
+type: "POST" , 
+success: function(data){
+$("#profile").html(data);
+}
+});
+
+}
+function logout(){
+<?php
+session_destroy();
+?>
+window.location.replace("http://localhost/restaurant_web_project/website.php");
+}
+
+  </script>
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

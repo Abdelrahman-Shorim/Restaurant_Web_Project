@@ -21,15 +21,12 @@ if (mysqli_num_rows($result) === 1) {
         $_SESSION['ID'] = $row['U_ID'];
        $_SESSION['email']=$_POST['email'];
        $_SESSION['Firstname']=$row['FN'];
+       $_SESSION['lastname']=$row['LN'];
        $_SESSION['password']=$_POST['password'];
+       $_SESSION['Phone_Num']=$row['Phone_Num'];
        $_SESSION['Image']=$row['img'];
-       if($row['U_Type']==1)
-       {
         header("Location: home_page.php");
-       }
-       elseif($row['U_Type']==2){header("location:Cashier_view/menu.php");}
-       elseif($row['U_Type']==3){header("location:Quality_Control/");}
-       exit();
+        exit();
     }
     else{
             // echo "Incorrect Username or Password";

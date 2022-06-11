@@ -19,7 +19,7 @@ session_start();
             <div class="form-box">
                 <div class='button-box'>
                     <div id='btn'></div>
-                    <button type='button'onclick='login()'class='toggle-btn'><b>Log in</b></button>
+                    <button type='button'onclick='login()'class='toggle-btn' style="color:rgb(147, 111, 156);"><b>Log in</b></button>
                     <button type='button'onclick='register()'class='toggle-btn'><b>Sign up</b></button>
                 </div >
                 <form id='login' class='input-group-login' action = "validate.php" method="post" >
