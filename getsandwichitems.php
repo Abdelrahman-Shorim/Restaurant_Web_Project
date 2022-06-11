@@ -1,4 +1,5 @@
 <?php
+session_start();
     $conn= mysqli_connect("localhost","root","","restaurant_web_project");
     if($conn->connect_error) die("fatal error");
 
@@ -29,11 +30,13 @@
         {
             if($row['ID']==$_POST['breadid'])
             {
-                echo '<input type="radio" id="'.$row2['img'].'" name="'.$row2['TypeName'].'" value="'.$row2['Name'].'" onclick="additem(this)">';
+                // echo '<input type="radio" id="'.$row2['img'].'" name="'.$row2['TypeName'].'" value="'.$row2['Name'].'" onclick="additem(this)">';
+                echo '<input type="radio" id="'.$row2['img'].'" name="'.$row2['TypeName'].'" value="'.$row2['ID'].','.$row2['Name'].','.$row2['price'].'_" onclick="additem(this)">';
+
             }
             else
-                echo '<input type="checkbox" id="'.$row2['img'].'" name="'.$row2['TypeName'].'" value="'.$row2['Name'].'" onclick="additem(this)">';
-            echo '<label for="'.$row2['img'].'">'.$row2['Name'].'       $'.$row2['price'].'</label><br>';
+                echo '<input type="checkbox" id="'.$row2['img'].'" name="'.$row2['TypeName'].'" value="'.$row2['ID'].','.$row2['Name'].','.$row2['price'].'_" onclick="additem(this)">';
+            echo '<label for="'.$row2['img'].'"><b>'.$row2['Name'].':</b><i> $'.$row2['price'].'</i></label><br>';
         }
         echo "</div>";
     }
