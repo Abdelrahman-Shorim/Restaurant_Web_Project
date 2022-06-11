@@ -195,68 +195,73 @@ session_start();
     <script>
         function addtocartsandwich()
         {
-            var sitems= [];
-
-
-            alert('Sandwich added');
-            // if(document.querySelector('input[name="Bread"]:checked').value==true)
-                sitems.push(document.querySelector('input[name="Bread"]:checked').value);
-
-
-            var markedCheckbox = document.getElementsByName('Protein');
-            for (var checkbox of markedCheckbox) {
-                if (checkbox.checked){
-                    sitems.push(checkbox.value);
-                }
-            }
-
-            markedCheckbox = document.getElementsByName('Cheese');
-            for (var checkbox of markedCheckbox) {
-                if (checkbox.checked){
-                    sitems.push(checkbox.value);
-                }
-            }
-
-            markedCheckbox = document.getElementsByName('Toppings');
-            for (var checkbox of markedCheckbox) {
-                if (checkbox.checked){
-                    sitems.push(checkbox.value);
-                }
-            }
-
             
-            markedCheckbox = document.getElementsByName('Sauces');
-            for (var checkbox of markedCheckbox) {
-                if (checkbox.checked){
-                    sitems.push(checkbox.value);
-                }
-            }
+            
+            if(document.getElementById("sec_1_img").childElementCount!=0){
+                var sitems= [];
+                alert('Sandwich added');
+                // if(document.querySelector('input[name="Bread"]:checked').value==true)
+                    sitems.push(document.querySelector('input[name="Bread"]:checked').value);
 
 
-            // alert(sitems[0]);
-            jQuery.ajax(
-                {
-                    url:"create_sandwich_cart.php",
-                    type:'post',
-                    data:{
-                        data:sitems
-                    },
-                    success:function(data)
-                    {
-                        $("#sitems").html(data);
-                        location.reload();
+                var markedCheckbox = document.getElementsByName('Protein');
+                for (var checkbox of markedCheckbox) {
+                    if (checkbox.checked){
+                        sitems.push(checkbox.value);
                     }
                 }
-            );
-            // // alert(sitems.length)
-            // document.getElementById("sitems").innerHTML="";
-            // for(t=0;t<sitems.length;t++)
-            // {
-            // //     alert(sitems[t]);
-            //     document.getElementById("sitems").append(sitems[t]+"<br>  ");
-            // }
-            getitems(0);
-            
+
+                markedCheckbox = document.getElementsByName('Cheese');
+                for (var checkbox of markedCheckbox) {
+                    if (checkbox.checked){
+                        sitems.push(checkbox.value);
+                    }
+                }
+
+                markedCheckbox = document.getElementsByName('Toppings');
+                for (var checkbox of markedCheckbox) {
+                    if (checkbox.checked){
+                        sitems.push(checkbox.value);
+                    }
+                }
+
+                
+                markedCheckbox = document.getElementsByName('Sauces');
+                for (var checkbox of markedCheckbox) {
+                    if (checkbox.checked){
+                        sitems.push(checkbox.value);
+                    }
+                }
+
+
+                // alert(sitems[0]);
+                jQuery.ajax(
+                    {
+                        url:"create_sandwich_cart.php",
+                        type:'post',
+                        data:{
+                            data:sitems
+                        },
+                        success:function(data)
+                        {
+                            $("#sitems").html(data);
+                            location.reload();
+                        }
+                    }
+                );
+                // // alert(sitems.length)
+                // document.getElementById("sitems").innerHTML="";
+                // for(t=0;t<sitems.length;t++)
+                // {
+                // //     alert(sitems[t]);
+                //     document.getElementById("sitems").append(sitems[t]+"<br>  ");
+                // }
+                getitems(0);
+            }
+            else
+            {
+                alert('you need to choose an item');
+            }
         }
 
     </script>
