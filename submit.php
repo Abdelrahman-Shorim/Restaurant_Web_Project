@@ -39,7 +39,7 @@
         if($num==$row['ID'])
         $type=$row['I_Type'];
     }
-    $imagepath="Restaurant_Web_Project/Menu_images/".$type."/";
+    $imagepath="Menu_images/".$type."/";
     $img=$imagepath.$imagename;
     
     // if($type=="Appetizers")

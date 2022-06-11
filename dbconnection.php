@@ -1,8 +1,14 @@
 <html>
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <body>
 
-<table border=1>
+<table class="table table-hover">
 
 <tr>
 
@@ -46,11 +52,19 @@ for ($j=0; $j < $rows; $j++) {
     echo '<input type="submit" value="edit">';
     echo '</form>';
     echo "<br></td>";
+
+    echo "<td>";
+    echo '<form action="dbconnection2.php" method="post">';
+    echo '<input type="hidden" name="I_ID" value="'.$row['I_ID'].'">';
+    echo '<input type="submit" value="delete">';
+    echo '</form>';
+    echo "<br></td>";
     
     // echo "<td><form method="POST" action="update.php">
     // <input type="hidden" name="I_ID" value="<?php echo $row['I_ID'];  
     // <input type="submit" value="save changes">" ><br></td>";
-	echo "<td><a href=deletepage.php?id=".$row['I_ID']."> Delete</a></td>";	
+
+	//echo "<td><a href=deletepage.php?id=".$row['I_ID']."> Delete</a></td>";	
 	echo "</tr>";
 	
 	}
