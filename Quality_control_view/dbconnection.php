@@ -1,8 +1,19 @@
+<?php include 'database.php';?>
+<?php include "qualitycontrol_navbar.php";?>
+
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+</html>
+
 <html>
 
 <body>
 
-<table border=1>
+<table class="table table-hover">
 
 <tr>
 
@@ -18,7 +29,7 @@
 </tr>
 <?php
 
-$conn = new mysqli("localhost","root","","restaurant_web_project");
+$conn = mysqli_connect($server, $user, $pass, $db );
 
 if ($conn->connect_error) die ("Fatal connection error");
 
@@ -43,14 +54,14 @@ for ($j=0; $j < $rows; $j++) {
     echo "<td>";
     echo '<form action="editpage.php" method="post">';
     echo '<input type="hidden" name="I_ID" value="'.$row['I_ID'].'">';
-    echo '<input type="submit" value="edit">';
+    echo '<input type="submit"  class="btn btn-info"  value="edit">';
     echo '</form>';
     echo "<br></td>";
     
     // echo "<td><form method="POST" action="update.php">
     // <input type="hidden" name="I_ID" value="<?php echo $row['I_ID'];  
     // <input type="submit" value="save changes">" ><br></td>";
-	echo "<td><a href=deletepage.php?id=".$row['I_ID']."> Delete</a></td>";	
+	echo "<td><a  href=deletepage.php?id=".$row['I_ID']. "> Delete</a></td>";	
 	echo "</tr>";
 	
 	}

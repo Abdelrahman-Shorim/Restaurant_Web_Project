@@ -1,3 +1,6 @@
+<?php 
+include 'database.php';
+?>
 <html>
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -6,16 +9,15 @@
 </head>
 </html>
 
+
 <?php
 include "qualitycontrol_navbar.php";
 $id=$_POST['id'];
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "restaurant_web_project";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+$conn = mysqli_connect($server, $user, $pass, $db );
 $query = "UPDATE users SET users.U_Type = 2 WHERE users.U_ID= $id ";
 $result = mysqli_query($conn,$query);
-
+$conn->close();
 ?>

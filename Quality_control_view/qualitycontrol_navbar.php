@@ -31,7 +31,17 @@
 					echo"<a href='quality_control_comments.php'>Comments</a>";
 					echo"<a href='qualitycontrol_rating.php'>Rating</a>";
 					echo"<a href='qualitycontrol_promotion.php'>Promotion</a>";
-                    
+					echo"<a href='dbconnection2.php'>Delete</a>";
+					echo"<a href='dbconnection.php'>edit</a>";
+					echo"<a href='editpage.php'>Edit</a>";
+					echo"<a href='add1.php'>add</a>";
+					echo"<a href='add2.php'>add2</a>";
+
+
+
+
+					
+
 				
 				?>
 		</div>
