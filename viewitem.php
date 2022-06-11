@@ -40,13 +40,7 @@
     echo'<img src="/'.$result2["img"].'" > ';
     echo '</div>';
     echo '<div class="content">';
-    echo '<div class="stars">';
-    echo '<i class="fas fa-star"></i>';
-    echo '<i class="fas fa-star"></i>';
-    echo '<i class="fas fa-star"></i>';
-    echo '<i class="fas fa-star"></i>';
-    echo '<i class="fas fa-star-half-alt"></i>';
-    echo '</div>';
+    
     echo'<h3>' .$result2["Name"]. '</h3>';
     echo'<p>'. $result2["Description"] . '</p>';
     echo '<p class="price">'. $result2["Price"] .'</p>';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 11:46 PM
+-- Generation Time: Jun 09, 2022 at 12:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -380,6 +380,30 @@ INSERT INTO `sandwich_items` (`ID`, `Name`, `price`, `img`, `Type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sandwich_order`
+--
+
+CREATE TABLE `sandwich_order` (
+  `SO_ID` int(11) NOT NULL,
+  `O_ID` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sandwich_order_details`
+--
+
+CREATE TABLE `sandwich_order_details` (
+  `SOD_ID` int(11) NOT NULL,
+  `SO_ID` int(11) NOT NULL,
+  `S_item` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sandwich_types`
 --
 
@@ -412,22 +436,11 @@ CREATE TABLE `users` (
   `Email` varchar(100) NOT NULL,
   `Password` varchar(250) NOT NULL,
   `img` varchar(250) NOT NULL,
-  `National_ID` int(25) NOT NULL,
+  `National_ID` bigint(50) NOT NULL,
   `Gender` int(5) NOT NULL,
   `Phone_Num` varchar(15) NOT NULL,
   `U_Type` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`U_ID`, `FN`, `LN`, `Email`, `Password`, `img`, `National_ID`, `Gender`, `Phone_Num`, `U_Type`) VALUES
-(1, 'mina', 'Abdo', '@gmail', '123', 'a', 1231321, 1, '31313', 1),
-(2, 'Abdelrahman', 'Ayman', '@gmail', '123', 'bleach.jpg', 1234556, 1, '123345', 1),
-(3, 'mina', 'antoun', 'mina@gmail.com', '123', 'Bleach-Wallpaper-hd.jpg', 123, 1, '0123', 1),
-(4, 'Ramez', 'Sherif', 'r@gmail.com', '123', 'bleach.jpg', 99213131, 1, '012213', 1),
-(5, 'Ramez', 'Sherif', 'r@gmail.com', '123', 'bleach.jpg', 99213131, 1, '012213', 1);
 
 -- --------------------------------------------------------
 
@@ -526,6 +539,21 @@ ALTER TABLE `sandwich_items`
   ADD KEY `Type` (`Type`);
 
 --
+-- Indexes for table `sandwich_order`
+--
+ALTER TABLE `sandwich_order`
+  ADD PRIMARY KEY (`SO_ID`),
+  ADD KEY `O_ID` (`O_ID`);
+
+--
+-- Indexes for table `sandwich_order_details`
+--
+ALTER TABLE `sandwich_order_details`
+  ADD PRIMARY KEY (`SOD_ID`),
+  ADD KEY `SO_ID` (`SO_ID`),
+  ADD KEY `S_item` (`S_item`);
+
+--
 -- Indexes for table `sandwich_types`
 --
 ALTER TABLE `sandwich_types`
@@ -610,6 +638,18 @@ ALTER TABLE `sandwich_items`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
+-- AUTO_INCREMENT for table `sandwich_order`
+--
+ALTER TABLE `sandwich_order`
+  MODIFY `SO_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sandwich_order_details`
+--
+ALTER TABLE `sandwich_order_details`
+  MODIFY `SOD_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `sandwich_types`
 --
 ALTER TABLE `sandwich_types`
@@ -619,7 +659,7 @@ ALTER TABLE `sandwich_types`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `U_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `U_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_types`
@@ -671,6 +711,19 @@ ALTER TABLE `rate`
 --
 ALTER TABLE `sandwich_items`
   ADD CONSTRAINT `sandwich_items_ibfk_1` FOREIGN KEY (`Type`) REFERENCES `sandwich_types` (`ID`);
+
+--
+-- Constraints for table `sandwich_order`
+--
+ALTER TABLE `sandwich_order`
+  ADD CONSTRAINT `sandwich_order_ibfk_1` FOREIGN KEY (`O_ID`) REFERENCES `order` (`O_ID`);
+
+--
+-- Constraints for table `sandwich_order_details`
+--
+ALTER TABLE `sandwich_order_details`
+  ADD CONSTRAINT `sandwich_order_details_ibfk_1` FOREIGN KEY (`SO_ID`) REFERENCES `sandwich_order` (`SO_ID`),
+  ADD CONSTRAINT `sandwich_order_details_ibfk_2` FOREIGN KEY (`S_item`) REFERENCES `sandwich_items` (`ID`);
 
 --
 -- Constraints for table `users`

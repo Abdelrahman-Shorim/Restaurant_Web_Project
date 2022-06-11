@@ -1,27 +1,33 @@
 <html>
+<?php
+session_start();
+
+?>
     <style>
         .sidenav {
             height: 100%; /*Full-height: remove this if you want "auto" height*/
-            width: 290px; /* Set the width of the sidebar */
+            width: 390px; /* Set the width of the sidebar */
             position: fixed; /* Fixed Sidebar (stay in place on scroll) */
             z-index: 1; /* Stay on top */
             top: 160; /* Stay at the top */
             right: 40;
             padding-top: 4px;
+            color:white;
         }
 
         .items{
-            height: 400px;
-            width: 250;
-            background-color: red;
+            height: 500px;
+            width: 350;
+            background-color: #00203FFF;
             overflow: auto; /*for scrolling*/
         }
         .items h3{
-            font-size: 25px;
+            font-size: 30px;
             text-align:center;
         }
         .items label{
             line-height: 1.8;
+            font-size: 20px;
         }
         .buttons input[type=button]{
             padding-left: 50px;
@@ -73,10 +79,12 @@
             div.innerHTML='<img src="'+node.id+'" alt="">';
 
 
-            if(parent_node_id==breadid)
+            // alert(parent_node_id);
+            if(parent_node_id=="sandwichtype"+breadid)
             {
-                document.getElementById(insert_section_div).innerHTML=""; // removes other type of bread to add the new type
-                document.getElementById(insert_section_div).append(div);
+                // alert(breadid);
+                document.getElementById("sec_1_img").innerHTML=""; // removes other type of bread to add the new type
+                document.getElementById("sec_1_img").append(div);
             }
             else
             {
@@ -98,14 +106,14 @@
         
         function changetype(y)
         {
-            // if(check()) {
+            if(check()) {
                 // alert(value);
                 document.getElementById("nav"+value).className="";
                 document.getElementById("sandwichtype"+value).style.display="none";
                 value=y;
                 document.getElementById("sandwichtype"+value).style.display="inline";
                 document.getElementById("nav"+value).className="active";
-            // }
+            }
         }
         function go(y){
             jQuery.ajax(
@@ -139,6 +147,8 @@
 
 
     <body>
+    <div id="sitems"></div>
+
     <div class="topnav">
         <?php
             $conn= mysqli_connect("localhost","root","","restaurant_web_project");
@@ -170,11 +180,83 @@
 
     <div class ="sidenav"><!--el div ely feha kol 7aga -->
         <div class ="items"> <!-- div bta3et el items --> </div><br>
+
+        <div class="buttons"> <!-- div bta3et el next wel back -->
+        <button class = "btn"  onclick="addtocartsandwich()">Add to cart</button>
+                <!-- // <input type="button" value="Add to cart" onclick="addtocartsandwich()"> -->
+            </div> <!-- END   div bta3et el next wel back -->
     </div><!-- END el div ely feha kol 7aga -->
 
-    <div style="background-color: #DBF9FC;padding: 200px 440px;"><!-- makan el sowar -->
+    <div style="padding: 200px 440px;"><!-- makan el sowar -->
         <div id="sec_1_img" >  <!-- first section --></div> <!-- END first section -->
         <div id="sec_2_img" style="height: 100px;width: 200px;top:400px;">  <!-- 2nd section --></div> <!-- END 2nd section -->
     </div><!-- END   makan el sowar -->
     </body>    
+    <script>
+        function addtocartsandwich()
+        {
+            var sitems= [];
+
+
+            alert('Sandwich added');
+            // if(document.querySelector('input[name="Bread"]:checked').value==true)
+                sitems.push(document.querySelector('input[name="Bread"]:checked').value);
+
+
+            var markedCheckbox = document.getElementsByName('Protein');
+            for (var checkbox of markedCheckbox) {
+                if (checkbox.checked){
+                    sitems.push(checkbox.value);
+                }
+            }
+
+            markedCheckbox = document.getElementsByName('Cheese');
+            for (var checkbox of markedCheckbox) {
+                if (checkbox.checked){
+                    sitems.push(checkbox.value);
+                }
+            }
+
+            markedCheckbox = document.getElementsByName('Toppings');
+            for (var checkbox of markedCheckbox) {
+                if (checkbox.checked){
+                    sitems.push(checkbox.value);
+                }
+            }
+
+            
+            markedCheckbox = document.getElementsByName('Sauces');
+            for (var checkbox of markedCheckbox) {
+                if (checkbox.checked){
+                    sitems.push(checkbox.value);
+                }
+            }
+
+
+            // alert(sitems[0]);
+            jQuery.ajax(
+                {
+                    url:"create_sandwich_cart.php",
+                    type:'post',
+                    data:{
+                        data:sitems
+                    },
+                    success:function(data)
+                    {
+                        $("#sitems").html(data);
+                    }
+                }
+            );
+            // // alert(sitems.length)
+            // document.getElementById("sitems").innerHTML="";
+            // for(t=0;t<sitems.length;t++)
+            // {
+            // //     alert(sitems[t]);
+            //     document.getElementById("sitems").append(sitems[t]+"<br>  ");
+            // }
+            getitems(0);
+            
+        }
+
+    </script>
 </html> 
