@@ -1,3 +1,8 @@
+
+<?php 
+    include 'qualitycontrol_navbar.php';
+    ?>
+
 <?php
 
     // $hn='localhost';
@@ -15,7 +20,7 @@
     $Description=$_POST['Description'];
     $Price=$_POST['Price'];
     $type=$_POST['type'];
-    $imagepath="/Restaurant_Web_Project/Menu_images/".$type."";
+    $imagepath="Menu_images/".$type."/";
     $img=$imagepath.$imagename;
 
     

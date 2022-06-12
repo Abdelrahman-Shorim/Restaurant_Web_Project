@@ -1,51 +1,26 @@
 <html>
     <body>
-        <?php
-        $conn = new mysqli("localhost","root","","restaurant_web_project");
-
-        if ($conn->connect_error) die ("Fatal connection error");
-        $query = "select ID,I_Type,description,image from item_types"; //preparation
-
-        $result = $conn->query($query);
-
-        if (!$result) die ("Fatal Query error");
-
-        //echo "Query ok <br>";
-
-        $rows = $result->num_rows;
-
-
-        ?>
-        <form method="post" action="submit.php" enctype="multipart/form-data"  onsubmit="return check()">
+        <form method="post" action="add2.php" enctype="multipart/form-data"  onsubmit="return check()">
             Name:        <input type="text" name="Name" id="Name"><br>
             Description: <input type="text" name="Description" id="Description"><br>
             price:       <input type="text" name="Price" id="Price"><br>
             image:       <input type="file" name="img" size="25" id="img" ><br>
             type:
             <select name="type" size="1" id="type">
-                <?php
-                for ($j=0; $j < $rows; $j++) {
-	
-                    $row = $result->fetch_array(MYSQLI_ASSOC);
-                    echo '<option value="'.$row['ID'].'">'.$row['I_Type'].'</option>'; 
-                
-                }
-                ?>
-            
-}
-                <!-- <option value="Choose">Choose</option> -->
-                <!-- <option value="Appetizers">Appetizers</option> -->
-                <!-- <option value="Beef">Beef</option> -->
-                <!-- <option value="Chicken">Chicken</option> -->
-                <!-- <option value="Desserts">Desserts</option> -->
-                <!-- <option value="Drinks">Drinks</option> -->
-                <!-- <option value="Kids">Kids</option> -->
-                <!-- <option value="Pasta">Pasta</option> -->
-                <!-- <option value="Pizza">Pizza</option> -->
-                <!-- <option value="Salads">Salads</option> -->
-                <!-- <option value="Sandwiches">Sandwiches</option> -->
-                <!-- <option value="Seafood">Seafood</option> -->
-                <!-- <option value="Soups">Soups</option> -->
+                <option value="Choose">Choose</option>
+                <option value="Appetizers">Appetizers</option>
+                <option value="Beef">Beef</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Desserts">Desserts</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Kids">Kids</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Salads">Salads</option>
+                <option value="Sandwiches">Sandwiches</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Soups">Soups</option>
+                <option value="Veal">Veal</option>
             </select><br>
             <input type="submit" value="upload">
         </form>
@@ -64,7 +39,7 @@
                 alert("Description is empty");
                 return false;
             }
-            if(document.getElementById("Price").value=="")
+            if(document.getElementById("Price").value==""||isNaN(document.getElementById("Price").value)==true)
             {
                 alert("Price is empty");
                 return false;

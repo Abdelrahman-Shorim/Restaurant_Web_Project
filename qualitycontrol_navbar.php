@@ -33,9 +33,9 @@
 					echo"<a href='qualitycontrol_promotion.php'>Promotion</a>";
 
 
-					echo"<a href='dbconnection2.php'>Delete</a>";
+					// echo"<a href='dbconnection2.php'>Delete</a>";
 					echo"<a href='dbconnection.php'>Edit Items</a>";
-					echo"<a href='editpage.php'>Edit</a>";
+					// echo"<a href='editpage.php'>Edit</a>";
 					echo"<a href='add1.php'>add</a>";
 
 
