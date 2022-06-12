@@ -55,8 +55,8 @@ session_start();
     echo"<p class="."title"."> ".$_SESSION['email']."</p>"."<br>"."<br>"."<br>";
     echo"<p class="."title"."> ". $_SESSION['password']."</p>"."<br>"."<br>"."<br>";
     echo"<p class="."title2"."> ". $_SESSION['Phone_Num']."</p>"."<br>"."<br>"."<br>";
-    echo "<button onclick="."profiledit()".">Edit</button>";   
-    echo "<button onclick="."logout()".">Logout</button>";  
+    echo "<button onclick='profiledit()'>Edit</button>";   
+    echo "<button onclick='logout()'>Logout</button>";  
 //  }
 
 ?>
@@ -66,34 +66,30 @@ session_start();
 </html>
 
 <script>
-  function psave(){
-    jQuery.ajax({
-url:"p.php",
-data:{FN:$('#Fname').val(),LN:$('#Lname').val(),Email:$('#Email').val(),Password:$('#Password').val(),Phone_number:$('#Phone_number').val()},
-type:"POST",
-success:function(){location.reload();}
-
-
-    });
   
-  }
-function profiledit(){
-alert("hello");
-  jQuery.ajax({
-url:"editprofile.php" ,
-data:{ email: "<?php echo $_SESSION['email']?>"},
-type: "POST" , 
-success: function(data){
-$("#profile").html(data);
-}
-});
+function profiledit()
+{
+  alert("hello");
+      jQuery.ajax(
+        {
+            url:"editprofile.php" ,
+            data:{ email: "<?php echo $_SESSION['email']?>"},
+            type: "POST" , 
+            success: function(data)
+            {
+              $("#profile").html(data);
+            }
+    });
 
 }
-function logout(){
-<?php
-session_destroy();
-?>
-window.location.replace("http://localhost/restaurant_web_project/website.php");
+
+function logout()
+{
+  jQuery.ajax({
+    type:'post',
+    url:'logout.php'
+  });
+  window.location.replace("http://localhost/restaurant_web_project/website.php");
 }
 
   </script>
